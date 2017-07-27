@@ -1,0 +1,609 @@
+<project name="RainMakerCSS" default="compile" basedir=".">
+  <property file="build.properties"/>
+
+  <!-- Property Definitions
+
+     Each of the following properties are used by convention in this
+     build file.  The values specified can be overridden at run time by
+     adding a "-Dname=value" argument to the command line that invokes Ant.
+     This technique is normally used to copy the values of the ANT_HOME
+     and TOMCAT_HOME environment variables into the "ant.home" and
+     "tomcat.home" properties, which are normally not defined explicitly.
+
+     app.name          Base name of this application, used to
+                       construct filenames and directories.
+
+     network.name      Base name of network application, used to
+                       construct filenames and directories.
+
+     deploy.home       The name of the directory into which the
+                       deployment hierarchy will be created.
+                       Normally, this will be the name of a
+                       subdirectory under $TOMCAT_HOME/webapps.
+
+     dist.home	        The name of the base directory in which
+                       distribution files are created.
+
+	  network.source	  The name of the base directory in which
+                       network source files stored.
+
+	  network.build	  The name of the base directory in which
+                       network distribution files are created.
+
+	  marketing.source  The name of the base directory in which
+                       marketing source files stored.
+
+	  marketing.build	  The name of the base directory in which
+                       marketing distribution files are created.
+
+     dist.war          The name of the Web ARchive (WAR) file
+                       containing our deployable network application.
+                       This filename should end with ".war".	  
+
+     network.war       The name of the Web ARchive (WAR) file
+                       containing our deployable network application.
+
+     javadoc.home      The name of the base directory in which
+                       the JavaDoc documentation for this application
+                       is generated.
+
+     tomcat.home       The name of the base directory in which
+                       Tomcat has been installed.  This value is
+                       set to the build directory by default.  Please
+                       change the value of tomcat.home at run time by 
+                       adding a "-Dtomcat.home=<your tomcat home>/webapps".
+
+     This application being developed will be deployed
+     to a subdirectory named "<TOMCAT_HOME>/webapps/css", and will therefore 
+     be accessible at:
+
+     http://localhost:<port>/css
+  -->
+  <property name="install.target"           value="${ui.install.dir}/RMapplications" />
+  <property name="app.name"           value="css"/>
+  <property name="tomcat.home"	      value="${basedir}/build"/>
+  <property name="deploy.home"        value="${tomcat.home}/${app.name}"/>
+  <property name="charts.home"        value="${basedir}/templates/charts"/>
+  <property name="qa.deploy.baseline" value="/home/apps"/>
+  <property name="qa.deploy.home"     value="/home/apps"/>
+  <property name="install.doc"        value="UIInstall.doc"/>
+  <property name="build.number"	      value="RainMaker_CSS"/>
+  <property name="help.build.number"  value="MS_HELP_PATCH"/>
+  <property name="dist.home"          value="${basedir}/dist"/>
+  <property name="dist.war"           value="${app.name}.war"/>
+  <property name="dist.zip"		      value="${build.number}.zip"/>
+  <property name="property.file"      value="${tomcat.home}/propertyFilesClient"/>
+  <property name="property.file.dist" value="${dist.home}/propertyFilesClient"/>
+  <property name="property.path" 	  value="${property.file.dist}/com/inovis/b2b/css/web/resources"/>
+  <property name="jndi.properties"    value="src/main/com/inovis/b2b/css/web/resources/jndi.properties"/>
+  <property name="javadoc.home"       value="${basedir}/docs/javadoc"/>
+  <property name="install.home"       value="${basedir}/install/InstallShield/Projects/solaris/default"/>
+  <property name="help_archive.dir"   value="${basedir}/web/help" />
+  <property name="marketing_archive.dir"   value="${basedir}/web/marketing" />
+  <property name="external_help.zip"  value="${help_archive.dir}/ExternalUserHelp.ZIP" />
+  <property name="internal_help.zip"  value="${help_archive.dir}/InternalUserHelp.ZIP" />
+  <property name="jsp.path"           value="${deploy.home}/jsp" />  
+  <property name="certificate.dist"   value="${dist.home}/certificate" />
+	<property name="certificate.path"   value="${basedir}/web/certificate" />
+	<property name="xsl.dist"   				value="${dist.home}/xsl" />
+	<property name="xsl.path"   				value="${basedir}/templates/xsl" />
+  <property name="scripts.dist"       value="${dist.home}" />
+  <property name="scripts.path"       value="${basedir}/scripts/install" />
+  <property name="templates.dist"     value="${dist.home}/templates" />
+  <property name="templates.path"     value="${basedir}/templates/charts" />
+  <property name="jsp.file"           value="" />  
+  <property name="help.name"       	  value="css_help"/>
+  <property name="help.war"        	  value="${help.name}.war"/>  
+  <property name="marketing.name"       	  value="marketing"/>
+  <property name="marketing.war"        	  value="${marketing.name}.war"/>  
+  <property name="help.source"     	  value="${basedir}/network" />
+  <property name="help.build"      	  value="${tomcat.home}/${help.name}" />
+  <property name="marketing.build"      	  value="${basedir}/web/${marketing.name}" />
+  <property name="external_help.context"  value="help/customer" />
+  <property name="internal_help.context"  value="help/serviceprovider" />
+  <property name="WL.deploy.dir"  value="C:\bea\user_projects\domains\mydomain\applications" />
+  <property name="core.lib.dir" location="../../core/hegemony/dist/lib/META-INF/lib"/>
+  <property name="core.base.dir" location="../../core/hegemony"/>
+  <property name="onx.base.dir" location="../../core/hegemony/lib/onx"/>
+  <property name="weblogic.lib.dir" location="../../core/hegemony/lib/weblogic"/>
+  <taskdef name="wldeploy" 
+         classname="weblogic.ant.taskdefs.management.WLDeploy"
+         classpath="${weblogic.lib.dir}\weblogic.jar"/>
+  
+  <property name="corda.dist.path" location="${dist.home}/corda"/>
+
+<!-- Tomcat Specific -->
+  <property name="tomcat.manager.url" value="http://${host}:8080/manager"/>
+
+  <!-- weblogic classpath -->
+  <path id="weblogic.class.path">
+    <filelist id="weblogicServerLib" dir="${weblogic.lib.dir}" files="weblogic.jar,webservices.jar,xbean.jar,wlw-langx.jar"/>
+    <filelist id="weblogicServerLibSchema" dir="${weblogic.lib.dir}\server\lib\schema" files="weblogic-container-binding.jar"/>
+    <filelist id="weblogicCommonLib" dir="${weblogic.lib.dir}\common\lib" files="wlw-util.jar"/>
+    <filelist id="weblogicJavelinLib2" dir="${weblogic.lib.dir}\javelin\lib" files="bcel-5.1.jar,javelinx.jar" />
+    <filelist id="javaHomeToolbox" dir="${java.home}\..\lib" files="tools.jar" />
+    <filelist id="strutsLib" dir="lib" files="struts.jar" />    
+  </path>
+
+  
+<!-- The "prepare" target is used to construct the deployment home
+     directory structure, and to copy in static files as required.  
+     Ant is instructed to create the deployment directory, copy the 
+     contents of the "web/" source hierarchy, and set up the WEB-INF 
+     subdirectory appropriately .
+-->
+
+<!-- this target prepares for css only -->
+  <target name="prepare" >
+    <echo message="JDK Version: ${ant.java.version}" />
+    <echo message="Java Home: ${java.home}" />
+    <echo message="ANT Version: ${ant.version}" />
+    <echo message="OS Version: ${os.name}" />
+    <echo message="" />
+    <mkdir  dir="${deploy.home}"/>
+    <copy todir="${deploy.home}">
+      <fileset dir="web" >
+      	<exclude name="help/**"/>
+      	<exclude name="certificate/**"/>
+      	<exclude name="corda/**"/>
+      </fileset>
+    </copy>
+    <mkdir  dir="${deploy.home}/WEB-INF/classes"/>
+    <mkdir  dir="${deploy.home}/WEB-INF/lib"/>
+    <copy todir="${deploy.home}/WEB-INF/lib">
+      <fileset dir="lib" excludes="weblogic.jar"/>
+    </copy>
+    <mkdir  dir="${javadoc.home}"/>
+    <mkdir  dir="${dist.home}"/>
+  </target>
+  
+<!-- The "clean" target removes the deployment home directory structure,
+     so that the next time the "compile" target is requested, it will need
+     to compile everything from scratch.
+     It also removes the help file directories, which by its own is a separate target.
+-->
+
+  <target name="clean">
+    <delete dir="${deploy.home}" failonerror="false"/>
+    <delete dir="${property.file}" failonerror="false"/>
+    <delete dir="${property.file.dist}" failonerror="false"/>
+      <delete dir="${certificate.dist}" failonerror="false"/>
+    <delete dir="${templates.dist}" failonerror="false"/>
+    <delete dir="${xsl.dist}" failonerror="false"/>
+    <delete dir="${dist.home}/setupproperties" failonerror="false"/>
+    <delete file="${dist.home}/${dist.war}" failonerror="false"/>
+    <delete dir="${corda.dist.path}"/>
+    <delete file="${dist.home}/ui_silent_install.sh" failonerror="false"/>    
+      <delete file="${dist.home}/ui_install_domain.sh" failonerror="false"/>
+      <delete file="${dist.home}/ui_install_apps.sh" failonerror="false"/>
+    <delete file="${dist.home}/ui_install_graphics.sh" failonerror="false"/>
+    <delete file="${dist.home}/ui_silent_install.config" failonerror="false"/>
+      <delete file="${dist.home}/UItemplate.jar" failonerror="false"/>
+      <delete file="${dist.home}/RainmakerUtil.jar" failonerror="false"/>
+    <delete failonerror="false">
+    	<fileset dir="${dist.home}" includes="**/*.zip"/>
+    </delete>
+  </target>
+  
+<!-- 
+		 The "compile" target is used to compile (or recompile) the Java classes
+     that make up this web application.  The recommended source code directory
+     structure makes this very easy because the <javac> task automatically
+     works its way down a source code hierarchy and compiles any class that
+     has not yet been compiled, or where the source file is newer than the
+     class file.
+
+     The "compile" task depends on the "prepare" task, so the deployment
+     home directory structure will be created if needed the first time.
+-->
+
+  <target name="compile" depends="prepare">
+    <javac srcdir="src/main" destdir="${deploy.home}/WEB-INF/classes" debug="${debug}">
+    <compilerarg line="-encoding cp1252"/>
+    	<classpath>
+      	<pathelement path="${classpath}" />
+                <filelist id="core" dir="${core.lib.dir}" files="RainmakerServerLib.jar"/>
+                <path refid="weblogic.class.path"/>
+        	<fileset dir="lib">
+        		<include name="*.jar"/>
+        		<include name="*.zip"/>
+        	</fileset>
+    		<fileset dir="${core.lib.dir}">
+    			<include name="RainmakerServerLib.jar"/>
+    			<include name="omni_parser.jar"/>
+    			<include name="inovisopenpgp.jar"/>
+    			<include name="bcpg-jdk14-130.jar"/>
+    			<include name="bcprov-jdk14-130.jar"/>
+    			<include name="client_ftp.jar"/>
+    		</fileset>
+    		<fileset dir="${onx.base.dir}">
+    			<include name="ONXlate.jar"/>
+    		</fileset>
+			</classpath>
+     	<include name="**/*.java"/>
+    </javac>
+    <mkdir  dir="${property.file}"/>
+    <copy todir="${property.file}">	
+    	<fileset dir="src/main"  >
+      	<exclude name="**/jndi.properties"/>
+      	<include name="**/*.properties" />
+      	<include name="**/*.key" />
+      	<include name="**/*.crt" />	
+    	</fileset>
+    	<fileset dir="${core.base.dir}/src/main" >
+      	<include name="com/inovis/b2b/resource/pgp/*.properties" />
+    	</fileset>
+  	</copy>
+  </target>
+     
+  <!-- A "compileJSPs" target to pre-compile all JSP pages -->
+  
+  <target name="compileJSP" depends="prepare">
+  	<java classname="weblogic.jspc"
+  			fork="true">  		
+  		<arg line="-version"/>
+  		<classpath>
+        		<path refid="weblogic.class.path"/>
+        		<pathelement path="${java.class.path}"/>
+      		</classpath>  		  		
+  	</java>
+  	<java classname="weblogic.jspc"
+  			fork="true"
+  			failonerror="false"
+  			maxmemory="256M"
+  			>
+			<arg line="-verboseJspc"/>
+			<arg line="-O"/>
+			<arg line="-compileAll"/>
+  		<arg line="-webapp ${deploy.home}"/>
+  		<arg line="-docroot ${deploy.home}"/>
+  		<arg line="-d ${deploy.home}/WEB-INF/classes"/>
+  		<classpath>
+        		<path refid="weblogic.class.path"/>
+        		<pathelement path="${java.class.path}"/>
+      		</classpath>  		
+  	</java>
+  	<delete>
+    	<fileset dir="${deploy.home}/WEB-INF/classes" includes="**/*.java"/>
+  	</delete>  	
+  </target>
+
+
+  <!-- A "compileWAR" target to pre-compile and validate the Web-App. -->
+  
+  <target name="compileWAR" >
+  
+         <!-- Replaced ant task with direct call to weblogic.appc as  
+              a workaround for CR127407 which is not fixed until 8.1 SP3. 
+              http://e-docs.bea.com/wls/docs81/notes/resolved_sp03.html -->  
+
+       <property name="appc.dir" value="build/appc" />
+       <delete dir="${appc.dir}" />
+       <java classname="weblogic.appc" fork="true" failonerror="true">
+            <jvmarg value="-Djava.io.tmpdir=${appc.dir}" />
+            <jvmarg value="-Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0" />
+	          <arg line="-verbose -O -compiler javac -version " />
+            <classpath>
+              <path refid="weblogic.class.path"/>
+            </classpath>
+       </java>
+              
+      <java classname="weblogic.appc" fork="true" failonerror="true" >
+	          <arg line="-verbose -O -compiler javac -keepgenerated" />
+            <arg value="${dist.home}/css.war"/>
+            <jvmarg value="-Xms64m" /> 
+            <jvmarg value="-Xmx768m" />             
+            <jvmarg value="-Djava.io.tmpdir=${appc.dir}" /> 
+            <jvmarg value="-Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0" />
+            <classpath>
+              <path refid="weblogic.class.path"/>
+            </classpath>
+         </java>
+  </target>
+
+
+<!-- The "javadoc" target is used to create the Javadoc API documentation
+     for the Java classes in this web application.  It is assumed that
+     this documentation is included in the deployed application, so the
+     example below generates the Javadoc HTML files in a subdirectory under
+     the deployment home directory.  
+-->
+
+  <target name="javadoc" depends="prepare">
+    <javadoc sourcepath="src/main" packagenames="com.inovis.*"
+                destdir="${javadoc.home}"/>
+  </target>
+
+<!-- The "all" target rebuilds everything by executing the "clean"
+     target first, which forces the "compile" target to compile all
+     source code instead of just the files that have been changed.
+-->
+
+  <target name="all" depends="clean,prepare,compile,javadoc,dist"/>
+
+<!-- The "dist" target builds the distribution Web ARchive (WAR) file
+     for this application.
+-->
+
+  <target name="dist" depends="dist_css,compileWAR"/>
+
+  <target name="dist_dev" depends="dist_noclean"/>
+  
+  <!-- Exactly the same as dist_css target but without calling "clean".
+       It will run faster if your project is already compiled, or you need to
+       compile only few classes
+  -->
+  <target name="dist_noclean" depends="prepare,compile">
+       <antcall target="_dist"/>
+  </target>
+
+  <target name="_dist">
+    <tstamp/>
+
+    <!--  ### Make sure and use the latest CORE RSL.jar ### -->     
+    <!--#CJC -->
+    <copy file="${core.lib.dir}/RainmakerServerLib.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+    <copy file="${core.base.dir}/lib/omni_parser.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+    <copy file="${onx.base.dir}/ONXlate.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+    <copy file="${core.base.dir}/lib/inovisopenpgp.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+    <copy file="${core.base.dir}/lib/bcpg-jdk14-130.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+    <copy file="${core.base.dir}/lib/bcprov-jdk14-130.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+    <copy file="${core.base.dir}/lib/client_ftp.jar" todir="${deploy.home}/WEB-INF/lib" overwrite="true"/>
+
+    <jar jarfile="${dist.home}/${dist.war}" basedir="${deploy.home}">
+		<manifest>
+		  <attribute name="Built-By" value="${user.name}"/>
+		  <section name="com/inovis/b2b/css/web">
+		    <attribute name="Specification-Title" value="inovisworks.net"/>
+		    <attribute name="Specification-Version" value="${build.number}"/>
+		    <attribute name="Specification-Vendor" value="Inovis Inc."/>
+		    <attribute name="Implementation-Title" value="inovisworks.net"/>
+		    <attribute name="Implementation-Version" value="${build.number} ${TODAY}"/> 
+		    <attribute name="Implementation-Vendor" value="Inovis Inc."/>
+		  </section>
+		  <section name="com/inovis/b2b/css/web/">
+		    <attribute name="Sealed" value="true"/>
+		  </section>
+	  </manifest>
+	</jar>    
+	<mkdir  dir="${property.file.dist}"/>
+    <copy todir="${property.file.dist}">	
+    	<fileset dir="${property.file}"/>
+  	</copy>
+  	<copy todir="${corda.dist.path}">
+  	<fileset dir="web/corda"  >
+  		<include name="**/*" />	
+  	</fileset>
+  	</copy>  
+  </target>
+  <target name="dist_css" depends="clean,prepare,compile">
+       <antcall target="_dist" />
+  </target>
+	<!-- ############################################################################## -->
+	<!-- #The "qa_deploy" target builds the complete RainMaker CSS web application      -->
+	<!-- ############################################################################## -->
+
+  <target name="qa_deploy" depends="dist,build_marketing,war_help" >    
+    <!-- Zip up the entire dist dir -->
+    <delete file="${dist.home}/${dist.zip}"/>
+    <zip destfile="${dist.home}/${dist.zip}">    
+       <zipfileset dir="${dist.home}" includes="**" excludes="${dist.zip}" />
+       <zipfileset dir="${scripts.path}" includes="ui_install_apps.sh,RainmakerUtil.jar" filemode="754" />
+       <zipfileset dir="${basedir}/web/" includes="certificate/**"  />
+       <zipfileset dir="${basedir}/templates/" includes="xsl/**"  />
+       <zipfileset dir="${basedir}/templates/charts" includes="**" prefix="templates" />
+    </zip>
+    
+  </target>
+
+    <!-- ====================================================================== -->
+    <!-- The following targets are for building and distibuting the Help files. -->
+    <!-- ====================================================================== -->
+		<target name="war_help">
+			<tstamp/>
+			<jar jarfile="${dist.home}/${help.war}">
+				<manifest>
+				  <attribute name="Built-By" value="${user.name}"/>
+				  <section name="css_help">
+				    <attribute name="Specification-Title" value="inovisworks.net OnLine Help Files"/>
+				    <attribute name="Specification-Version" value="${help.build.number}"/>
+				    <attribute name="Specification-Vendor" value="Inovis Inc."/>
+				    <attribute name="Implementation-Title" value="inovisworks.net OnLine Help Files"/>
+				    <attribute name="Implementation-Version" value="${help.build.number} ${TODAY}"/> 
+				    <attribute name="Implementation-Vendor" value="Inovis Inc."/>
+				  </section>
+			  </manifest>
+			  <zipfileset src="${internal_help.zip}" includes="**" prefix="${internal_help.context}" />
+			  <zipfileset src="${external_help.zip}" includes="**" prefix="${external_help.context}" />
+			  <zipfileset dir="${help_archive.dir}" includes="*.xml" prefix="WEB-INF" />
+			</jar> 
+		</target>
+		
+		<target name="dist_help" depends="war_help">
+			<tstamp>
+				<format property="TODAY" pattern="MM_dd_yyyy" />
+			</tstamp>
+			<zip destfile="${dist.home}/${help.build.number}_${TODAY}.zip" basedir="${dist.home}" includes="${help.war}" />
+		</target>
+		
+		
+    <!-- ====================================================================== -->
+    <!-- The following targets are for building and distibuting the marketing files. -->
+    <!-- ====================================================================== -->
+
+		<target name="clean_marketing" >
+			<delete file="${dist.home}/${marketing.war}"/>
+		</target>
+		
+		<target name="build_marketing" depends="clean_marketing, war_marketing" />			
+		
+		<target name="war_marketing">
+			<tstamp/>
+			<jar jarfile="${dist.home}/${marketing.war}" basedir="${marketing.build}">
+				<manifest>
+				  <attribute name="Built-By" value="${user.name}"/>
+				</manifest>
+			</jar> 
+		</target>
+    <!-- End Marketing targets -->		
+		
+
+    <!-- Start tomcat specific targets for development only -->
+    
+    <target name="reload" depends="compile" description="Reload application in Tomcat">
+     	<!-- Configure custom Ant tasks for the Manager application -->
+     	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
+    		<classpath>
+      			<pathelement path="${tomcat.install.dir}/server/lib/catalina-ant.jar"/>
+    		</classpath>
+  		</taskdef>
+     	<reload url="${tomcat.manager.url}"
+        	username="${tomcat.username}"
+        	password="${tomcat.password}"
+            path="/${app.name}"/>
+    </target>
+    
+    
+   <!-- End tomcat specific -->
+
+
+    <!-- Copy resource out to WL deployment directory development only -->
+
+    <target name="deployExplodedLocal" depends="compile"  description="copy exploded format to WL domain">
+        <copy  todir="${WL.deploy.dir}" overwrite ="yes">
+          <fileset dir ="${tomcat.home}" />
+        </copy>
+    	<!--remove staging directory after distribution to WL -->
+    	<antcall target="clean"/>
+    </target>
+
+
+   <!-- End deployExplodedLocal-->
+
+
+   <!-- Clean out staging and other resources inside container preparing for new deployment-->
+
+    <target name="cleanDeployEnvLocal"   description="clean out deploy directory including temporary files">
+
+       <delete includeEmptyDirs="true">
+         <!-- Remove exploded CSS-->
+          <fileset dir="${WL.deploy.dir}\css">
+             <include name="**/*"/>
+        </fileset>
+        <!--Remove app Ear file-->
+        <fileset dir="${WL.deploy.dir}">
+             <include name="**/*.ear"/>
+        </fileset>
+      <!--  Remove all files under cached diretory-->
+        <fileset dir="C:\bea\user_projects\domains\mydomain\myserver\.wlnotdelete">
+             <include name="**/*"/>
+        </fileset>
+          <!--  Remove  log fies-->
+        <fileset dir="C:\bea\user_projects\domains\mydomain">
+             <include name="**/mydomain.log*"/>
+             <include name="**/CORE.log*"/>
+        </fileset>
+      </delete>
+     <!-- Copy the latest app EAR file out to deploy directory -->
+<!--
+      <copy file="C:\ccviews\shared_RainMaker\rainmaker\hegemony\dist\RainMakerWeblogic.ear"  todir="${WL.deploy.dir}" overwrite ="yes"/>
+-->
+
+    </target>
+
+   <target name="autodeploy">
+      <!--ant antfile="${core.base.dir}/build.xml" target="dist"/-->
+      <!--ant antfile="${basedir}/build.xml" target="createInstall"/-->
+      <exec executable="COREdeployment.exp" output="autoCOREdeploy.txt"/>
+      <exec executable="UIdeployment.exp" output="autoUIdeploy.txt"/>
+   </target>
+  
+    <!-- ================================================================== -->
+  <!-- Copy war file to RMApplicaiton folder and deploy it -->
+  <!-- ================================================================== -->
+
+  <target name="copy.css" depends="dist_noclean" >
+    <delete dir="${install.target}/${dist.war}" />
+    <delete file="${install.target}/${dist.war}" />
+    <copy file="${dist.home}/${dist.war}"
+         tofile="${install.target}/${dist.war}" 
+         overwrite="yes"/>
+         
+    <delete>
+       <fileset dir="${install.target}/propertyFilesClient" 
+          includes="**"
+          excludes="jndi.properties,remote.jndi.properties" />
+    </delete>         
+    
+    <copy todir="${install.target}/propertyFilesClient" >
+            <fileset  dir="${dist.home}/propertyFilesClient" 
+                      includes="**" 
+                      excludes="jndi.properties,remote.jndi.properties"/>
+    </copy>    
+  </target>
+
+  <target name="deploy.new">
+    <property name="weblogic.url" value="t3://localhost:7001" />
+    <property name="weblogic.user" value="system" />
+    <property name="weblogic.password" value="password" />
+    <property name="weblogic.server" value="AdminServer" />
+    <echo message="COMMAND LINE: -Dweblogic.server=${weblogic.server} -Dweblogic.url=${weblogic.url} -Dweblogic.user=${weblogic.user} -Dweblogic.password=${weblogic.password} -Dinstall.dir=${install.dir}" />
+    <antcall target="copy.css" />
+    <wldeploy action="deploy" 
+              name="css" 
+              user="${weblogic.user}" 
+              password="${weblogic.password}" 
+              verbose="true" 
+              adminurl="${weblogic.url}" 
+              debug="true" 
+              targets="${weblogic.server}"
+              source="${install.target}/${dist.war}"
+              failonerror="${weblogic.deploy.failonerror}"/>
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Copy war file to RMApplicaiton folder and re-deploy it -->
+  <!-- ================================================================== -->
+
+  <target name="redeploy.new" >
+    <property name="weblogic.url" value="t3://localhost:7001" />
+    <property name="weblogic.user" value="system" />
+    <property name="weblogic.password" value="password" />
+    <property name="weblogic.server" value="AdminServer" />
+    <echo message="COMMAND LINE: -Dweblogic.server=${weblogic.server} -Dweblogic.url=${weblogic.url} -Dweblogic.user=${weblogic.user} -Dweblogic.password=${weblogic.password} -Dinstall.dir=${install.dir}" />
+
+    <wldeploy action="stop" 
+              name="css" 
+              user="${weblogic.user}" 
+              password="${weblogic.password}" 
+              verbose="true" 
+              adminurl="${weblogic.url}" 
+              debug="true" 
+              targets="${weblogic.server}"
+              failonerror="${weblogic.deploy.failonerror}"/>
+
+    <antcall target="copy.css" />
+             
+    <wldeploy action="redeploy" 
+              name="css" 
+              user="${weblogic.user}" 
+              password="${weblogic.password}" 
+              verbose="true" 
+              adminurl="${weblogic.url}" 
+              debug="true" 
+              targets="${weblogic.server}"
+              source="${install.target}/${dist.war}"
+              failonerror="${weblogic.deploy.failonerror}"/>
+    <wldeploy action="start" 
+              name="css" 
+              user="${weblogic.user}" 
+              password="${weblogic.password}" 
+              verbose="true" 
+              adminurl="${weblogic.url}" 
+              debug="true" 
+              targets="${weblogic.server}"
+              failonerror="${weblogic.deploy.failonerror}"/>
+              
+  </target>
+
+</project>

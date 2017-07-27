@@ -1,0 +1,10 @@
+[GXS-Classes]
+class      = !com\.gxs\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*).*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS
+detail     = disabled
+priority   = -8
+
+

@@ -1,0 +1,86 @@
+#!/bin/sh
+#
+# Startup script for Tomcat Servlet Engine (/etc/init.d/tomcat)
+#
+# chkconfig: 86 14
+# description: Tomcat is the Apache Servlet Engine
+# processname: tomcat
+# pidfile: /var/run/tomcat.pid
+#
+# TOMCAT_HOME refers to tomcat installation directory here in my case
+# it is /opt/local/jakarta-tomcat-5.5.9
+# ln -s /etc/rc3.d/S80tomcat /etc/init.d/tomcat
+# ln -s /etc/rc3.d/K20tomcat /etc/init.d/tomcat
+# Make sure tomcat starts before httpd and stops after httpd
+# User under which tomcat will run
+export TOMCAT_USER=root
+export TOMCAT_HOME=/opt/local/jakarta-tomcat-5.5.9
+
+RETVAL=0
+
+# start and stop functions
+start() {
+    echo -n "Starting tomcat: "
+
+        JAVA_HOME=/usr/java/jdk1.5.0_04
+        JDK_HOME=$JAVA_HOME/bin
+        CLASSPATH=.
+        PATH=$PATH:$HOME/bin:/sbin:/usr/sbin::$JDK_HOME
+        export PATH JAVA_HOME JDK_HOME CLASSPATH 
+        $TOMCAT_HOME/bin/startup.sh
+        RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && touch /var/lock/subsys/tomcat
+    return $RETVAL
+}
+
+stop() {
+    echo -n "Stopping tomcat: "
+        JAVA_HOME=/usr/java/jdk1.5.0_04
+        JDK_HOME=$JAVA_HOME/bin
+        CLASSPATH=.
+        PATH=$PATH:$HOME/bin:/sbin:/usr/sbin::$JDK_HOME
+        export PATH JAVA_HOME JDK_HOME CLASSPATH
+        $TOMCAT_HOME/bin/shutdown.sh
+        RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && rm -f /var/lock/subsys/tomcat var/run/tomcat.pid
+}
+
+# See how we were called.
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        stop
+        # Ugly hack
+        # We should really make sure tomcat
+        # is stopped before leaving stop
+        sleep 10
+        start
+        ;;
+ status)
+        INSTANCES=`ps -aux | grep java|grep tomcat|wc -l`
+        if [ $INSTANCES -eq 0 ]; then
+                echo Tomcat is stopped
+                RETVAL=3
+        else
+                if [ $INSTANCES -eq 1 ]; then
+                        echo Tomcat is running 1 instance...
+else
+                        echo Tomcat is running $INSTANCES instances...
+                fi
+                RETVAL=0
+        fi
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+exit $RETVAL
+

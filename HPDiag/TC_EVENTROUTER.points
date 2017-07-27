@@ -1,0 +1,61 @@
+[com-gxs-eventservice-audit-controller]
+class      = !com\.gxs\.eventservice\.audit\.controller\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*)
+layer      = GXS/com/gxs/eventservice/audit/web
+deep_mode  = soft
+#detail     = disabled
+#priority   = -8
+
+[com-gxs-eventservice-audit-client]
+class      = !com\.gxs\.eventservice\.audit\.client\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*)
+layer      = GXS/com/gxs/eventservice/audit/client
+deep_mode  = soft
+#detail     = disabled
+#priority   = -8
+
+
+[com-gxs-eventservice-audit-manager-1]
+class      = com.gxs.eventservice.audit.EventAuditManagerImpl
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*)
+layer      = GXS/com/gxs/eventservice/audit
+deep_mode  = soft
+#detail     = disabled
+#priority   = -8
+
+[com-gxs-eventservice-audit-manager-2]
+class      = com.gxs.eventservice.audit.EventAuditManager
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*)
+layer      = GXS/com/gxs/eventservice/audit
+deep_mode  = soft
+#detail     = disabled
+#priority   = -8
+
+
+[com-gxs-eventservice-audit-tomcatconnector]
+class      = !com\.gxs\.eventservice\.audit\.tomcatconnector\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*)
+layer      = GXS/com/gxs/eventservice/audit/tomcatconnector
+deep_mode  = soft
+#detail     = disabled
+#priority   = -8
+
+[com-gxs-eventservice-audit-dao]
+class      = !com\.gxs\.eventservice\.audit\.dao\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*)
+layer      = GXS/com/gxs/eventservice/audit/dao
+deep_mode  = soft
+#detail     = disabled
+#priority   = -8

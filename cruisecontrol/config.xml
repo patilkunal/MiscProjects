@@ -1,0 +1,107 @@
+<cruisecontrol>
+  <property name="p4.port" value="clapton.dev.itlogon.com:1999"/>
+  <property name="p4.user" value="KPatil"/>
+  <property name="p4.password" value="atl"/>
+  <property name="p4.client" value="kpatilcruise"/>
+  <property name="email.from" value="kunal.patil@inovis.com"/>
+  <property name="email.to" value="kunal.patil@inovis.com"/>
+  <!-- <property name="email.alf.dev" value="kirk.farrar@inovis.com,kunal.patil@inovis.com,glenn.renfro@inovis.com,hal.clements@inovis.com,chris.bridges@inovis.com,varadarajan.raghunathan@inovis.com,rob.gillen@inovis.com,bryan.horne@inovis.com,randy.alton@inovis.com"/> -->
+  <property name="email.alf.dev" value="kunal.patil@inovis.com"/>
+  <property name="smtp.host" value="alfexbe1.itlogon.com"/>
+  
+  <project name="inovisworks" buildafterfailed="true">
+    	<!-- Bootstrappers are run every time the build runs, 
+        	*before* the modification checks -->
+	<bootstrappers>
+		<p4bootstrapper view="//inovisworks/main/core/hegemony/build.xml" port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/core/hegemony/buildtest.xml" port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/core/hegemony/build.properties" port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/core/hegemony/src/..." port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/core/hegemony/lib/..." port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/core/hegemony/conf/..." port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+	</bootstrappers>
+    
+    	<!-- Defines where cruise looks for changes, to decide whether to run the build --> 
+	<modificationset quietperiod="10">
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/core/hegemony/src/..." usep4email="false"/>
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/core/hegemony/build.xml" usep4email="false"/>
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/core/hegemony/buildtest.xml" usep4email="false"/>
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/core/hegemony/build.properties" usep4email="false"/>
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/core/hegemony/lib/..." usep4email="false"/>
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/core/hegemony/conf/..." usep4email="false"/>
+	</modificationset>
+	
+	<!-- Configures the actual build loop, how often and which build file/target --> 
+	<schedule interval="3600">
+		<ant buildfile="build-inovisworks-core.xml" target="build" uselogger="false" usedebug="false">
+			<jvmarg arg="-Xmx200m"/>
+		</ant>
+	</schedule>
+
+	<!-- directory to write build logs to --> 
+    	<log dir="logs/inovisworks">
+    		<merge dir="checkout/inovisworks/main/core/hegemony/junit-report"/>
+    	</log>
+    	
+    	<listeners>
+        	<currentbuildstatuslistener file="logs/inovisworks/buildstatus.txt"/>
+    	</listeners>
+
+    	<publishers>
+		<currentbuildstatuspublisher file="logs/inovisworks/buildstatus.txt"/>    		
+    		
+    		
+    		<email buildresultsurl="http://hvas:9090/buildresults/inovisworks" mailhost="${smtp.host}" reportsuccess="never" returnaddress="${email.from}" skipusers="true" spamwhilebroken="false" subjectprefix="[CruiseControl] ">
+    			<always address="${email.to}"/>
+    			<failure address="${email.alf.dev}" reportWhenFixed="true"/>
+		</email>    		
+		<!--
+		<htmlemail mailhost="${smtp.host}"
+          		returnaddress="${email.from}"
+          		skipusers="true"
+          		reportsuccess="fixes"
+          		subjectprefix="[CruiseControl]"
+          		buildresultsurl="http://hvas:8080/buildresults/inovisworks"
+          		logdir="C:\cruisecontrol\logs\inovisworks"
+          		xsldir="C:\cruisecontrol\webapps\cruisecontrol\xsl"
+          		css="C:\cruisecontrol\webapps\cruisecontrol\css\cruisecontrol.css">
+  				<failure address="${email.alf.dev}" />
+  				<success address="${email.alf.dev}" />
+		</htmlemail>
+		// -->
+		<!-- <x10 houseCode="C" deviceCode="1" port="COM1" onWhenBroken="true"/> -->
+    	</publishers>
+ </project>
+ 
+ <project name="inovisworks-css" buildafterfailed="true">
+	<bootstrappers>
+		<p4bootstrapper view="//inovisworks/main/css/webclient/build.xml" port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/css/webclient/src/..." port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+		<p4bootstrapper view="//inovisworks/main/css/webclient/lib/..." port="${p4.port}" user="${p4.user}" passwd="${p4.password}" client="${p4.client}"/>
+	</bootstrappers>
+	<modificationset quietperiod="10">
+		<p4 correctForServerTime="true" port="${p4.port}" client="${p4.client}" user="${p4.user}" passwd="${p4.password}" view="//inovisworks/main/css/webclient/src/..." usep4email="false"/>
+	</modificationset>
+
+	<schedule interval="3600">
+		<ant buildfile="build-inovisworks-css.xml" target="build" uselogger="false" usedebug="false">
+			<jvmarg arg="-Xmx256m"/>
+		</ant>
+	</schedule>
+    	<log dir="logs/inovisworks-css">
+    		<merge dir="checkout/inovisworks/main/css/webclient/junit-report"/>
+	</log>    	
+    	<listeners>
+        	<currentbuildstatuslistener file="logs/inovisworks-css/buildstatus.txt"/>
+    	</listeners>
+    	<publishers>
+		<currentbuildstatuspublisher file="logs/inovisworks-css/buildstatus.txt"/>    		
+    		
+    		<email buildresultsurl="http://hvas:9090/buildresults/inovisworks-css" mailhost="${smtp.host}" reportsuccess="never" returnaddress="${email.from}" skipusers="true" spamwhilebroken="false" subjectprefix="[CruiseControl] ">
+    			<always address="${email.to}"/>
+    			<failure address="${email.alf.dev}" reportWhenFixed="true"/>
+		</email>    		
+    	</publishers>
+ </project>
+
+</cruisecontrol> 

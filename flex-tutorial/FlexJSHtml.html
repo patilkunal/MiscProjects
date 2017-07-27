@@ -1,0 +1,143 @@
+<html>
+<head><title>FlexJSTitle</title>
+<style type="text/css">
+table.sample {
+  width: 225px;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: dotted;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.sample td {
+  font-size: 9px;
+	border-width: 1px;
+	padding: 5px;
+	border-style: dotted;
+	border-color: gray;
+	-moz-border-radius: 0px 0px 0px 0px;
+  text-align: left;
+}
+</style>
+
+<script language="javascript">
+function addPerson()
+{
+  var name = document.getElementById('txtName').value;
+  var age = document.getElementById('txtAge').value;
+  var sex = document.getElementById('selSex').value;
+  getFlexApp('flexjsobj').addPerson(name, age, sex);
+}
+
+// This function returns the appropriate reference,
+// depending on the browser.
+function getFlexApp(flashname)
+{
+  if (navigator.appName.indexOf("Microsoft") !=-1)
+  {
+    return window[flashname];
+  }
+  else
+  {
+    return document[flashname];
+  }
+}
+
+function displayPerson(person)
+{
+  if(person == null){ 
+    alert("Please select a person, or maybe I screwed up.");
+  }
+  else{
+    document.getElementById('nameDisplay').innerHTML = person.Name;
+    document.getElementById('ageDisplay').innerHTML = person.Age;
+    document.getElementById('sexDisplay').innerHTML = person.Sex;
+  }
+}
+
+
+</script>
+<body>
+
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+	WIDTH="550" HEIGHT="400" id="flexjsobj">
+		<PARAM NAME=movie VALUE="FlexJS.swf">
+		<PARAM NAME=quality VALUE=high>
+		<PARAM NAME=bgcolor VALUE=#FFFFFF>
+		<param name="allowScriptAccess" value="always" />
+
+<EMBED src="FlexJS.swf" quality=high bgcolor=#FFFFFF WIDTH="550" HEIGHT="400" 
+NAME="flexjsobj" TYPE="application/x-shockwave-flash"
+PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer" allowScriptAccess="always"></EMBED>
+</OBJECT>
+  <table class="sample">
+    <tr>
+      <td>
+
+        Data coming into Javascript
+      </td>
+    </tr>
+    <tr>
+      <td>
+
+<table>
+  <tr>
+    <td>Name:</td>
+    <td id="nameDisplay" style="width:150px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Age:</td>
+    <td id="ageDisplay" style="width:150px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Sex:</td>
+    <td id="sexDisplay" style="width:150px;">&nbsp;</td>
+  </tr>
+</table>
+
+      </td>
+    </tr>
+    <tr>  
+      <td>
+        Data sending from Javascript
+      </td>
+    </tr>
+    <tr>  
+      <td>
+
+<table style="border-spacing:5px;">
+  <tr>
+    <td style="border-style:none;padding:0px;">Name:</td>
+    <td style="border-style:none;padding:0px;">
+      <input id="txtName" type="text" />
+    </td>
+  </tr>
+  <tr><td style="border-style:none;padding:0px;">Age:</td>
+    <td style="border-style:none;padding:0px;">
+      <input id="txtAge" type="text" />
+    </td>
+  </tr>
+  <tr><td style="border-style:none;padding:0px;">Sex:</td>
+    <td style="border-style:none;padding:0px;">
+      <select id="selSex" style="width:100px;">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="border-style:none;padding:0px;">
+      <input type="button" id="butAddPerson"
+       onclick="addPerson()" value="Add Person" />
+    </td>
+  </tr>
+</table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</head>

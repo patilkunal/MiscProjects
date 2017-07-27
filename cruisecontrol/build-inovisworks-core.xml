@@ -1,0 +1,19 @@
+<project name="build-inovisworks-core" default="build" 
+	basedir="checkout/inovisworks/main/core/hegemony">
+	<property name="redeployerror" value="0"/>
+	<target name="weblogiccheck">
+		<telnet port="7001" server="localhost" timeout="20">
+			<read/>
+			<write>GET / http/0.9</write>
+			<write/>
+			<read timeout="10">&lt;/HTML&gt;</read>
+		</telnet>
+	</target>
+	<target name="build">
+		<ant antfile="buildLocal.xml" target="kruntests"/>
+		<!-- redeploy the core  -->
+		<exec executable="redep-core.bat" dir="C:/WINDOWS" failonerror="false" resultproperty="redeployerror" timeout="300000"/>
+		<echo message="Weblogic redeploy return code : ${redeployerror}"/>
+		<ant antfile="buildLocal.xml" target="kruntests"/>
+	</target>
+</project>

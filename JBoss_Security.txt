@@ -1,0 +1,57 @@
+ How to implement Security in J2EE / Jboss server?
+ 
+ web.xml: say wich resources should be secured and how
+ 
+  <security-constraint>
+<display-name>acceso seguro</display-name>
+<web-resource-collection>
+<web-resource-name>fullSite</web-resource-name>
+<url-pattern>*.jsp</url-pattern>
+<url-pattern>*.do</url-pattern>
+<http-method>GET</http-method>
+<http-method>POST</http-method>
+</web-resource-collection>
+<auth-constraint>
+<role-name>normalUser</role-name>
+</auth-constraint>
+<user-data-constraint>
+<transport-guarantee>NONE</transport-guarantee>
+</user-data-constraint>
+</security-constraint>
+
+<login-config>
+<auth-method>FORM</auth-method>
+<realm-name>myLogin</realm-name>
+<form-login-config>
+<form-login-page>/logon/logon.jsp</form-login-page>
+<form-error-page>/logon/logonError.html</form-error-page>
+</form-login-config>
+</login-config>
+You should modify this to do http authentication.
+
+<security-role>
+<role-name>normalUser</role-name>
+</security-role>
+
+* jboss-web.xml (located in the same directory as web.xml
+
+<jboss-web>
+      <security-domain>java:/jaas/mySecurityDomain</security-domain> 
+</jboss-web>
+
+* login-config.xml (in your application jboss conf directory)
+
+<application-policy name="mySecurityDomain">
+<authentication>
+            <login-module
+code="org.jboss.security.auth.spi.DatabaseServerLoginModule"
+flag="required">
+<module-option name="dsJndiName">java:/genesisDS</module-option>
+<module-option name="principalsQuery">select password from Usuario where userid=?</module-option>
+<module-option name="rolesQuery">select rolId, 'Roles' from Usuario_Rol where userId=?</module-option>
+<module-option name="hashAlgorithm">SHA</module-option>
+<module-option name="hashEncoding">base64</module-option>
+<module-option name="hashCharset">UTF-8</module-option>
+</login-module>
+       </authentication>
+</application-policy>

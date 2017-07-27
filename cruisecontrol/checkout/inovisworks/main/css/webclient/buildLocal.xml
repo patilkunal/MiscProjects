@@ -1,0 +1,41 @@
+<project name="KunalBuildCSS" basedir="." default="kdeploy">
+  <property name="app.name" value="css"/>
+  <property name="tomcat.home"	      value="${basedir}/build"/>
+  <property name="deploy.home"        value="${tomcat.home}/${app.name}"/>
+  <property name="core.lib.dir"    value="../../core/hegemony/dist/lib/META-INF/lib"/>
+  <property name="core.base.dir" location="../../core/hegemony"/>
+  <property name="corda.home" value="c:/opt/UI/iworks/corda"/>
+  <property name="infrared" value="yes"/>
+
+    <target name="clean" depends="">
+        <echo message="Calling base clean..." />
+        <ant antfile="build.xml" target="clean"/>
+    </target>
+
+	<target name="kdeploy">
+			<ant antfile="build.xml" target="prepare"/>
+			
+	  		<echo message="Copying RainmakerServerLib.jar to CSS"/>
+	  		<copy file="../../core/hegemony/dist/lib/META-INF/lib/RainmakerServerLib.jar" todir="./build/css/WEB-INF/lib"/>
+			
+			<ant antfile="build.xml" target="compile"/>
+		<!-- From dist_css target -->
+	    <copy file="${core.lib.dir}/RainmakerServerLib.jar" todir="${deploy.home}/WEB-INF/lib"/>
+	    <copy file="${core.base.dir}/lib/omni_parser.jar" todir="${deploy.home}/WEB-INF/lib"/>
+	    <copy file="${core.base.dir}/lib/inovisopenpgp.jar" todir="${deploy.home}/WEB-INF/lib"/>
+	    <copy file="${core.base.dir}/lib/bcpg-jdk14-130.jar" todir="${deploy.home}/WEB-INF/lib"/>
+	    <copy file="${core.base.dir}/lib/bcprov-jdk14-130.jar" todir="${deploy.home}/WEB-INF/lib"/>
+	  	<copy todir="${corda.home}">
+	  	<fileset dir="web/corda"  >
+	  		<include name="**/*" />	
+	  	</fileset>
+	  	</copy>  
+
+	         <copy  todir="${deploy.home}/WEB-INF/classes">
+	           <fileset dir ="${tomcat.home}/propertyFilesClient" />
+	         </copy>
+	         <copy file="${core.lib.dir}/RainmakerServerLib.jar" todir="${deploy.home}/WEB-INF/lib"/>
+	         
+	</target>
+
+</project>

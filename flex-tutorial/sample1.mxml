@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+   layout="absolute"> 
+<mx:Canvas x="53" y="64" width="192" height="94"
+     cornerRadius="20" borderStyle="solid"
+     backgroundColor="#A9A9A9" id="mainCanvas">
+ 
+   <mx:Button x="10" y="10" id="newButton"
+       label="This is a button"/>
+         
+   <mx:Label x="10" y="57" id="newLabel"
+       text="This is a label"/>
+ </mx:Canvas>
+
+</mx:Application>

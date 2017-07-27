@@ -1,0 +1,3609 @@
+<project name="Rainmaker" default="dist" basedir=".">
+  <property file="build.properties"/>
+
+  <!-- ================================================================== -->
+  <!-- Set global properties for this build -->
+  <!-- ================================================================== -->
+  <!-- sets the build number -->
+  <property file="../../default.build.properties"/>	
+  
+  <property name="srcmain"                  value="src/main"/>
+  <property name="build"                    value="build"/>
+  <property name="buildmain"                value="build/main"/>
+  <property name="customclasses"            value="customclasses"/>
+  <property name="conf"                     value="conf"/>
+  <property name="dist"                     value="dist"/>
+  <property name="deploy"                   value="deploy"/>
+  <property name="deploy.GW"                value="deploy/GW"/>
+  <property name="deploy.CORE"              value="deploy/CORE"/>
+  <property name="meta"                     value="META-INF"/>
+  <property name="appinflib"                value="APP-INF/lib"/>
+  <property name="metainflib"                value="META-INF/lib"/>
+  <property name="docs"                     value="doc"/>
+  <property name="javadocs"                 value="doc/api"/>
+  <property name="rmear"                    value="RainMakerWeblogic.ear"/>
+  <property name="onxear"                   value="ONXWeblogic.ear"/>
+  <property name="webwareear"               value="WebwareWeblogic.ear"/>
+  <property name="dist.lib"                 value="dist/lib"/>
+
+  <!--
+  <property name="dist.onx"                 value="${dist.lib}"/>
+-->
+
+  <property name="dist.onx"                 value="dist/onx"/>
+  <property name="dist.webware"             value="dist/webware"/>
+  
+  <property name="dist.apps"                value="dist/apps"/>
+  <property name="dist.apps.ftp"            value="dist/apps/ftp"/>
+
+  <property name="dist.apps.sysmonitor"     value="dist/apps/sysmonitor"/>
+  <property name="dist.apps.x400"           value="dist/apps/x400"/>
+  <property name="common.jar"               value="RainmakerServerLib.jar"/>
+  <property name="webware.jar"               value="WebwareServerLib.jar"/>
+  <property name="common.local.jar"         value="LocalRainmakerServerLib.jar"/>
+  <property name="common.local.onx.jar"     value="LocalONXServerLib.jar"/>
+  <property name="common.local.webware.jar"     value="LocalWebwareServerLib.jar"/>
+  <property name="deprecation"              value="off"/>
+  <property name="dir.adminevent"           value="com/inovis/mss/adminevent"/>
+  <property name="dir.alert"                value="com/inovis/mss/alerts"/>
+  <property name="dir.archive"              value="com/inovis/mss/archive"/>
+  <property name="dir.archive.repository"   value="com/inovis/mss/archive/repository"/>
+  <property name="dir.business"             value="com/inovis/b2b/business"/>
+  <property name="dir.channel"              value="com/inovis/b2b/channel"/>
+  <property name="dir.businessuser"         value="com/inovis/mss/businessuser"/>
+  <property name="dir.document"             value="com/inovis/mss/doctrack"/>
+  <property name="dir.docscheduler"         value="com/inovis/mss/docscheduler"/>
+  <property name="dir.duplicatetrader"      value="com/inovis/mss/duplicatetrader"/>
+  <property name="dir.entity"               value="com/inovis/b2b/lib/util/entity"/>
+  <property name="dir.event"                value="com/inovis/mss/event"/>
+  <property name="dir.ftppushexpress"       value="com/inovis/mss/ftppushexpress"/>
+  <property name="dir.fileconfig"           value="com/inovis/mss/gateway/fileconfig"/>
+  <property name="dir.gateway"              value="com/inovis/mss/gateway"/>
+  <property name="dir.gateways"             value="com/inovis/mss/gateways"/>
+  <property name="dir.mailbox"              value="com/inovis/mss/mailbox"/>
+  <property name="dir.mailbag"              value="com/inovis/mss/mailbag"/>
+  <property name="dir.onnettransform"       value="com/inovis/mss/onnettransform"/>
+  <property name="dir.onnetmaptrack"        value="com/inovis/mss/onnettransform/maptrack"/>
+  <property name="dir.onnetrepository"      value="com/inovis/mss/onnettransform/repository"/>
+  <property name="dir.onnetjmsbridge"       value="com/inovis/mss/onnettransform/jmsbridge"/>
+  <property name="dir.onnetimportexport"    value="com/inovis/mss/onnettransform/iforms/importexport"/>
+  <property name="dir.network"              value="com/inovis/b2b/network"/>
+  <property name="dir.audit"                value="com/inovis/b2b/audit"/>
+  <property name="dir.bo"                   value="com/inovis/b2b/bo"/>
+  <property name="dir.docdef"               value="com/inovis/b2b/docdef"/>
+  <property name="dir.resource.b2b"         value="com/inovis/b2b/resource"/>
+  <property name="dir.resource.mss"         value="com/inovis/mss/resource"/>
+  <property name="dir.resourcethrottle"     value="com/inovis/mss/resourcethrottle"/>
+  <property name="dir.shadowivas"           value="com/inovis/mss/shadowivas"/>
+  <property name="dir.usersession"          value="${dir.gateway}/usersession"/>
+  <property name="dir.messagestore"         value="com/inovis/b2b/messagestore"/>
+  <property name="dir.pipeline.servlet"     value="${dir.gateways}/pipeline"/>
+  <property name="dir.uihelper"             value="com/inovis/mss/uihelper"/>
+  <property name="dir.vcm.servlet"          value="com/inovis/mss/vcm/servlet"/>
+  <property name="vcm.servlet"              value="VCM"/>
+  <property name="dir.vcm"                  value="com/inovis/mss/vcm"/>
+  <property name="dir.httpservice.servlet"  value="com/inovis/mss/servletAPI"/>
+  <property name="dir.registration.servlet" value="com/inovis/mss/registration/servlet"/>
+  <property name="dir.registration"         value="com/inovis/mss/registration"/>
+  <property name="dir.reghelper"            value="com/inovis/mss/registration/reghelper"/>
+  <property name="dir.rules"                value="com/inovis/b2b/rules"/>
+  <property name="dir.router"               value="com/inovis/b2b/rules/router"/>
+  <property name="dir.rules.inbound"        value="com/inovis/b2b/rules/inbound"/>
+  <property name="httpservice.servlet"      value="HttpService"/>
+  <property name="pipeline.servlet"         value="Pipeline"/>
+  <property name="registration.servlet"     value="Registration"/>
+  <property name="dir.util"                 value="com/inovis/util"/>
+  <property name="dir.b2b.lib"              value="com/inovis/b2b/lib"/>
+  <property name="dir.security"             value="com/inovis/mss/security"/>
+  <property name="dir.passwordmanagement"   value="com/inovis/mss/security/passwordmanagement"/>
+  <property name="dir.user"                 value="com/inovis/mss/user"/>
+  <property name="dir.authorization"        value="com/inovis/mss/authorization"/>
+  <property name="dir.ftp"                  value="com/inovis/mss/gateways/ftp"/>
+  <property name="dir.ftpx"                 value="com/inovis/mss/gateways/ftpx"/>
+  <property name="dir.x400"                 value="com/inovis/mss/gateways/x400"/>
+  <property name="dir.ediint"               value="com/inovis/mss/gateways/ediint"/>
+  <property name="dir.webformsgw"           value="com/inovis/mss/gateways/webforms"/>
+  <property name="dir.broker"               value="com/inovis/mss/gateways/lib/broker"/>
+  <property name="dir.country"              value="com/inovis/mss/country"/>
+  <property name="build.propertyFileDir"    value="build/propertyFiles"/>
+  <property name="build.propertyFileDirONX" value="build/propertyFilesONX"/>
+  <property name="manifest"                 value="conf/CORE/MANIFEST.MF"/>
+  <property name="manifest.onx"             value="conf/ONX/MANIFEST.MF"/>
+  <property name="dist.apps.migrate"        value="dist/apps/migrate"/>
+  <property name="dist.apps.shadowivas"     value="${dist.apps.migrate}/shadowivas"/>
+  <property name="dir.migrate"              value="com/inovis/mss/migrate"/>
+  <property name="dir.billing"              value="com/inovis/mss/billing"/>
+  <property name="dir.service"              value="com/inovis/mss/service"/>	
+  <property name="dir.sysconfig"            value="com/inovis/mss/sysconfig"/>
+  <property name="dir.gateways.config"      value="com/inovis/mss/gateways/config"/>
+  <property name="dir.install.db.ora"       value="install/db/ora"/>
+  <property name="dir.systemhealth"         value="com/inovis/mss/admin/systemhealth"/>
+  <property name="dir.sysmonitor"           value="com/inovis/mss/admin"/>
+  <property name="dir.webware"              value="com/inovis/mss/webware" />
+  <property name="dir.mss.util"             value="com/inovis/mss/util"/>
+  <property name="dir.eventframework"       value="com/inovis/mss/eventframework"/>
+  <property name="dir.systask"              value="com/inovis/mss/systask"/>
+  <property name="dir.docmonitor"           value="com/inovis/mss/docmonitor"/>
+  <property name="dir.dtsqueue"             value="com/inovis/mss/dtsqueue"/>
+  <property name="dir.notification"         value="com/inovis/mss/notification"/>
+  <property name="dir.timerservice"         value="com/inovis/mss/timerservice"/>
+  <property name="dir.resourcelock"         value="com/inovis/mss/resourcelock"/>
+  <property name="weblogic.lib.dir"         value="${basedir}/lib/weblogic"/>
+
+  <taskdef name="wldeploy" 
+         classname="weblogic.ant.taskdefs.management.WLDeploy"
+         classpath="${weblogic.lib.dir}\weblogic.jar"/>
+  
+  <!-- Endoressed library location to overcome dom jar conflict -->
+  <property name="endorsed.dir" value="${weblogic.lib.dir}"/>
+
+  <!-- BillRun application   -->
+  <property name="dist.apps.billing"        value="dist/apps/billing"/>
+
+  <!-- Rules/Router setup applications -->
+  <property name="dist.apps.rules"          value="dist/apps/rules"/>
+
+  <!-- Archive application -->
+  <property name="dist.apps.archive"        value="dist/apps/archive"/>
+
+  <!-- FileTool application -->
+  <property name="dist.apps.filetool"        value="dist/apps/filetool"/>
+
+  <!-- tar file name and dir -->
+  <property name="build.tar.file"   value="${ant.project.name}.test" />
+    <!-- By default, build.tar.file will take the value of -->
+    <!-- ant.project.name. However, it can be overwritten by the -->
+    <!-- defined macro given by command line option. For example: -->
+    <!-- ant -Dbuild.tar.file=RainMaker_BL13_11_26_2002 -->
+  <property name="build.tar.dir" value="${basedir}" />
+    <!-- By default, build.tar.dir will take the value of basedir -->
+    <!-- However, it can be overwritten by the defined macro given -->
+    <!-- by the command line option. For example: -->
+    <!-- ant -Dbuild.tar.dir=src -->
+
+  <!-- ftp stuff -->
+  <property name="ftp.action" value="put" />
+  <property name="ftp.server" value="lake.qa" />
+  <property name="ftp.remotedir" value="/opt/rmkr_mccabe/from_dev" />
+  <property name="ftp.userid" value="vobadm" />
+  <property name="ftp.password" value="lake01" />
+
+  <!-- Clover unit test coverage statistics -->
+  <taskdef resource="com/cenqua/ant/antlib.xml" classpath="lib/junit/cenquatasks.jar"/>
+  <extendclasspath path="lib/junit/clover.jar"/>
+  <taskdef resource="clovertasks" classpath="lib/junit/clover.jar"/>
+	
+  <tstamp>
+     <format property="today.yyyymmdd" pattern="yyyyMMdd" /> 
+  </tstamp>
+
+  <!-- ================================================================== -->
+  <!-- Set the CLASSPATH variable -->
+  <!-- ================================================================== -->
+
+  <path id="project.class.path">
+      <filelist id="weblogic"  dir="${weblogic.lib.dir}" files="weblogic.jar"/>
+      <pathelement location="${buildmain}" />
+      <fileset dir="lib"><include name="*.*"/></fileset>
+      <pathelement path="${java.class.path}" />
+      <filelist id="ipnetfiles"  dir="lib/ipnet"
+       files="a9patch.jar,inovisopenpgp.jar,bcpg-jdk14-130.jar,bcprov-jdk14-130.jar,jdom.jar,ipnetlib.jar,ipn_bmgr_extapi.jar,3paxis.jar,extapi3rdparty.jar,msgsrv_all.jar, junit.jar"/>
+      <filelist id="onxfiles"  dir="lib/onx" files="ONXlate.jar,soapapi.jar,FESI.jar"/>
+  </path>
+
+  <path id="compile.ejb.classpath.rmear">
+    <filelist id="rainMakerLib" dir="${dist}\lib\META-INF\lib" files="RainmakerServerLib.jar,LocalRainmakerServerLib.jar"/>
+    <filelist id="auditLib" dir="lib" files="audit.jar,omni_parser.jar,xerces-1_4_3.jar"/>
+    <filelist id="miscLib" 
+              dir="${dist}\lib" 
+              files="RainmakerServerLib.jar,
+                     LocalRainmakerServerLib.jar,
+                     EventFramework_ejb.jar,
+                     BusinessUser_ejb.jar,
+                     Authorization_ejb.jar,
+                     X400_ejb.jar,
+                     Billing_ejb.jar,
+    				 Service_ejb.jar,
+    				 Billing_Customer_ejb.jar,
+                     Security_ejb.jar,
+                     Country_ejb.jar,
+                     RulesEngine_ejb.jar,
+                     AdminEvent_ejb.jar,
+                     Event_ejb.jar,
+                     FTPPushExpress_ejb.jar,
+                     ResourceThrottle_ejb.jar,
+                     Archive_ejb.jar,
+                     DocMonitor_ejb.jar,
+                     DTSQueue_ejb.jar,
+                     Systask_ejb.jar,
+                     Purge_ejb.jar, 
+                     ArchiveRepository_ejb.jar,
+                     WebFormsGW_ejb.jar"/>
+    <filelist id="miscLib" dir="lib\ipnet" files="msgsrv_all.jar,jdom.jar"/>
+    <filelist id="rmServerLib" dir="${dist}\lib\META-INF\lib" files="RainmakerServerLib.jar"/>
+    <filelist id="onxEJBLib" 
+              dir="${dist.onx}\" 
+              files="OnNetworkMapTrack_ejb.jar,
+                     OnNetworkRepository_ejb.jar,
+                     OnNetworkTransform_ejb.jar"/>
+    <filelist id="onxLib" 
+              dir="lib\onx\" 
+              files="ONXlate.jar" />
+  </path>
+
+
+  <path id="compile.ejb.classpath.onxear">
+    <filelist id="rmServerLib" dir="${dist}\lib\META-INF\lib" files="RainmakerServerLib.jar"/>
+    <filelist id="onxServerLib" dir="${dist.onx}\META-INF\lib" files="LocalONXServerLib.jar"/>
+    <filelist id="onxEJBLib" dir="${dist.onx}\" 
+              files="OnNetworkMapTrack_ejb.jar,
+                     OnNetworkRepository_ejb.jar,
+                     OnNetworkTransform_ejb.jar"/>
+    <filelist id="onxLib" dir="lib\onx\" files="ONXlate.jar" />
+  </path>
+
+  <path id="compile.ejb.classpath.webwareear">
+    <filelist id="rmServerLib" dir="${dist}\lib\META-INF\lib" files="RainmakerServerLib.jar"/>
+    <filelist id="webwareServerLib" dir="${dist.onx}\META-INF\lib" files="WebwareServerLib.jar,${common.local.webware.jar}"/>
+    
+    <filelist id="webwareEJBLib" dir="${dist.webware}\" 
+              files="EventFramework_ejb.jar,
+                     Sys_Config_ejb.jar,
+                     OnNetworkImportExport_ejb.jar"/>
+    <filelist id="onxLib" dir="lib\onx\" files="ONXlate.jar" />
+  </path>
+
+
+  <path id="weblogic.class.path">
+    <filelist id="weblogicServerLib" dir="${weblogic.lib.dir}" files="weblogic.jar,webservices.jar,xbean.jar,wlw-langx.jar,ojdbc14.jar"/>
+    <filelist id="weblogicServerLibSchema" dir="${weblogic.lib.dir}\server\lib\schema" files="weblogic-container-binding.jar"/>
+    <filelist id="weblogicCommonLib" dir="${weblogic.lib.dir}\common\lib" files="wlw-util.jar"/>
+    <filelist id="weblogicJavelinLib2" dir="${weblogic.lib.dir}\javelin\lib" files="bcel-5.1.jar,javelinx.jar" />
+    <filelist id="javaHomeToolbox" dir="${java.home}\..\lib" files="tools.jar" />
+    <filelist id="strutsLib" dir="lib" files="struts.jar" />
+  </path>
+
+
+  <!-- ================================================================== -->
+  <!-- Initialize the build paths and create any needed directories -->
+  <!-- ================================================================== -->
+  <target name="init">
+     <!-- Create the time stamp -->
+     <tstamp/>
+     <!-- Echo the version of the JDK and OS -->
+     <echo message="JDK ${ant.java.version}" />
+     <echo message="OS ${os.name}" />
+     <!-- Create the build directory structure used by compile -->
+     <mkdir dir="${buildmain}"/>
+     <mkdir dir="${deploy.GW}"/>
+     <mkdir dir="${deploy.GW}/apps"/>
+     <mkdir dir="${deploy.CORE}"/>
+     <mkdir dir="${dist.onx}"/>
+     <mkdir dir="${dist.onx}/${appinflib}"/>
+     <mkdir dir="${dist}/lib/APP-INF/classes"/>
+     <mkdir dir="${dist}/lib/${appinflib}"/>
+     <mkdir dir="${dist.apps.ftp}"/>
+     <mkdir dir="${dist.apps.x400}"/>
+     <mkdir dir="${dist.apps.migrate}"/>
+     <mkdir dir="${dist.apps.migrate}/db"/>
+     <mkdir dir="${dist.apps.migrate}/tandem/extract"/>
+     <mkdir dir="${dist.apps.migrate}/tandem/load"/>
+     <mkdir dir="${dist.apps.migrate}/trackaccess"/>
+     <mkdir dir="${dist.apps.migrate}/vappcc"/>
+     <mkdir dir="${dist.apps.migrate}/dupedi"/>
+     <mkdir dir="${dist.apps.migrate}/jde/i20"/>
+     <mkdir dir="${dist.apps.migrate}/jde/i30"/>
+     <mkdir dir="${javadocs}"/>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Compile the java code from source directory into build directory -->
+  <!-- ================================================================== -->
+  <target name="compile" depends="init,copypropertyfiles,copyProperties,copyPropertiesONX">
+     <javac srcdir="${srcmain}"
+            destdir="${buildmain}"
+            debug="${debug}"
+            optimize="on"
+            deprecation="${deprecation}">
+        <compilerarg line="-endorseddirs ${endorsed.dir} -encoding cp1252"/>
+        <classpath refid="project.class.path" />
+     </javac>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the LocalRainmakerServerLib JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="common.local.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.authorization}/**/Local*.class"/>
+       <include name="${dir.billing}/**/Local*.class"/>
+       <include name="${dir.service}/**/Local*.class"/>     	
+       <include name="${dir.bo}/facade/Local*.class"/>
+       <include name="${dir.business}/facade/Local*.class"/>
+       <include name="${dir.channel}/facade/Local*.class"/>
+       <include name="${dir.country}/**/Local*.class"/>
+       <include name="${dir.document}/facade/Local*.class"/>
+       <include name="${dir.docmonitor}/**/Local*.class"/>
+       <include name="${dir.dtsqueue}/**/Local*.class"/>
+       <include name="${dir.ftppushexpress}/facade/Local*.class"/>
+       <include name="${dir.notification}/facade/Local*.class"/>
+       <include name="${dir.gateway}/**/Local*.class"/>
+       <include name="${dir.mailbox}/facade/Local*.class"/>
+       <include name="${dir.mailbag}/facade/Local*.class"/>
+       <include name="${dir.onnettransform}/facade/Local*.class"/>
+       <include name="${dir.onnetmaptrack}/facade/Local*.class"/>
+       <include name="${dir.onnetrepository}/facade/Local*.class"/>
+       <include name="${dir.messagestore}/facade/Local*.class"/>
+       <include name="${dir.resourcethrottle}/facade/Local*.class"/>
+       <include name="${dir.security}/facade/Local*.class"/>
+       <include name="${dir.user}/facade/Local*.class"/>
+       <include name="${dir.user}/erp/facade/Local*.class"/>
+       <include name="${dir.systask}/facade/*Local*.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="LocalRainmakerServerLibJar" depends="compile">
+    <mkdir dir="${dist.lib}/META-INF/lib"/>
+
+    <jar destfile="${dist.lib}/META-INF/lib/${common.local.jar}" duplicate="preserve">
+         <fileset refid="common.local.lib.files"/>
+    </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the LocalONXServerLib JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="common.local.onx.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnettransform}/facade/Local*.class"/>
+       <include name="${dir.onnetmaptrack}/facade/Local*.class"/>
+       <include name="${dir.onnetrepository}/facade/Local*.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="LocalONXServerLibJar" depends="compile">
+    <mkdir dir="${dist.onx}/META-INF/lib"/>
+    <jar destfile="${dist.onx}/META-INF/lib/${common.local.onx.jar}" duplicate="preserve">
+         <fileset refid="common.local.onx.lib.files"/>
+    </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the LocalONXServerLib JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="common.local.webware.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnetimportexport}/facade/Local*.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="LocalWebwareServerLibJar" depends="compile">
+    <mkdir dir="${dist.webware}/META-INF/lib"/>
+    <jar destfile="${dist.webware}/META-INF/lib/${common.local.webware.jar}" duplicate="preserve">
+         <fileset refid="common.local.webware.lib.files"/>
+    </jar>
+  </target>
+
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the RainmakerServerLib JAR file -->
+  <!-- ================================================================== -->
+
+  <!-- XXX SHeu - I've put the parse and util package here for now, not sure they belong here -->
+  <fileset id="common.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.b2b.lib}/**"/>
+       <include name="${dir.mss.util}/**"/>
+       <include name="${dir.util}/**"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="gateways.config.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.gateways.config}/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="resource.lib.files" dir="${buildmain}">
+      <!-- File set for locating Resource files -->
+      <patternset>
+         <include name="${dir.resource.b2b}/**" />
+         <include name="${dir.resource.mss}/**" />
+         <exclude name="**/*.properties" />
+      </patternset>
+   </fileset>
+
+  <fileset id="docdef.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.docdef}/defs/*.class"/>
+       <include name="${dir.docdef}/xpath/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="bo.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.bo}/*.class"/>
+       <include name="${dir.bo}/defs/*.class"/>
+       <include name="${dir.bo}/facade/LocalXmlBoFacade.class"/>
+       <include name="${dir.bo}/facade/LocalXmlBoFacadeHome.class"/>
+       <include name="${dir.bo}/facade/LocalNonXmlBoFacade.class"/>
+       <include name="${dir.bo}/facade/LocalNonXmlBoFacadeHome.class"/>
+       <include name="${dir.bo}/facade/NonXmlBoFacade.class"/>
+       <include name="${dir.bo}/facade/NonXmlBoFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="adminevent.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.adminevent}/*.class"/>
+       <include name="${dir.adminevent}/defs/*.class"/>
+       <include name="${dir.adminevent}/audit/*.class"/>
+       <include name="${dir.adminevent}/facade/AdminEventFacade.class"/>
+       <include name="${dir.adminevent}/facade/AdminEventFacadeHome.class"/>
+       <include name="${dir.adminevent}/facade/LocalAdminEventFacade.class"/>
+       <include name="${dir.adminevent}/facade/LocalAdminEventFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="alert.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.alert}/*.class"/>
+       <include name="${dir.alert}/defs/*.class"/>
+       <include name="${dir.alert}/audit/*.class"/>
+       <include name="${dir.alert}/facade/AlertFacade.class"/>
+       <include name="${dir.alert}/facade/AlertFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="audit.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.audit}/*.class"/>
+       <include name="${dir.audit}/defs/*.class"/>
+       <include name="${dir.audit}/spi/*.class"/>
+       <include name="${dir.audit}/facade/AuditSession.class"/>
+       <include name="${dir.audit}/facade/AuditSessionHome.class"/>
+       <include name="${dir.audit}/facade/LocalAuditSession.class"/>
+       <include name="${dir.audit}/facade/LocalAuditSessionHome.class"/>
+       <include name="${dir.audit}/notification/*.class"/>
+       <include name="${dir.audit}/notification/defs/*.class"/>
+       <include name="${dir.audit}/notification/server/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="business.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.business}/*.class"/>
+       <include name="${dir.business}/defs/*.class"/>
+       <include name="${dir.business}/facade/BusinessFacade.class"/>
+       <include name="${dir.business}/facade/BusinessFacadeHome.class"/>
+       <include name="${dir.business}/facade/OrganizationFacade.class"/>
+       <include name="${dir.business}/facade/OrganizationFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="channel.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.channel}/*.class"/>
+       <include name="${dir.channel}/defs/*.class"/>
+       <include name="${dir.channel}/facade/ChannelFacade.class"/>
+       <include name="${dir.channel}/facade/ChannelFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="docmonitor.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.docmonitor}/*.class"/>
+       <include name="${dir.docmonitor}/defs/*.class"/>
+       <include name="${dir.docmonitor}/parse/**"/>
+       <include name="${dir.docmonitor}/facade/*.class"/>
+       <include name="${dir.docmonitor}/processor/**"/>
+       <include name="${dir.docmonitor}/saxutils/**"/>
+       <include name="${dir.docmonitor}/task/**"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="dtsqueue.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.dtsqueue}/*.class"/>
+       <include name="${dir.dtsqueue}/defs/*.class"/>
+       <include name="${dir.dtsqueue}/facade/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="notification.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.notification}/*.class"/>
+       <include name="${dir.notification}/defs/*.class"/>
+       <include name="${dir.notification}/parse/*.class"/>
+       <include name="${dir.notification}/parse/defs/*.class"/>
+       <include name="${dir.notification}/publisher/smtp/*.class"/>
+       <include name="${dir.notification}/facade/NotificationFacade.class"/>
+       <include name="${dir.notification}/facade/NotificationFacadeHome.class"/>
+       <include name="${dir.notification}/facade/NotificationChannelFacadeHome.class"/>
+       <include name="${dir.notification}/facade/NotificationChannelFacade.class"/>
+       <include name="${dir.notification}/facade/NotificationChannelFacadeSLBean.class"/>
+       <include name="${dir.notification}/facade/AlertEventFacadeHome.class"/>
+       <include name="${dir.notification}/facade/AlertEventFacade.class"/>
+       <include name="${dir.notification}/facade/AlertEventFacadeSLBean.class"/>
+			 <include name="${dir.notification}/facade/AddressBookFacadeHome.class"/>
+       <include name="${dir.notification}/facade/AddressBookFacade.class"/>
+       <include name="${dir.notification}/facade/AddressBookFacadeSLBean.class"/>       
+       <include name="${dir.notification}/store/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="document.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.document}/*.class"/>
+       <include name="${dir.document}/defs/*.class"/>
+       <include name="${dir.document}/facade/DocumentFacade.class"/>
+       <include name="${dir.document}/facade/DocumentFacadeHome.class"/>
+       <include name="${dir.document}/facade/IformsDoctrackFacade.class"/>
+       <include name="${dir.document}/facade/IformsDoctrackFacadeHome.class"/>
+       <include name="${dir.document}/types/**"/>
+       <include name="${dir.document}/reports/**"/>
+
+       <include name="${dir.document}/reports/*.class"/>
+       <include name="${dir.document}/reports/defs/*.class"/>
+       <include name="${dir.document}/reports/facade/ScheduledDocumentReportFacade.class"/>
+       <include name="${dir.document}/reports/facade/ScheduledDocumentReportFacadeHome.class"/>
+       <include name="${dir.document}/reports/scheduleddocumentreport/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="docscheduler.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.docscheduler}/*.class"/>
+       <include name="${dir.docscheduler}/facade/*.class"/>
+     </patternset>
+  </fileset>
+  
+  <fileset id="resourcethrottle.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.resourcethrottle}/*.class"/>
+       <include name="${dir.resourcethrottle}/defs/*.class"/>
+       <include name="${dir.resourcethrottle}/facade/*.class"/>
+     </patternset>
+  </fileset>  
+
+   <fileset id="duplicatetrader.lib.files" dir="${buildmain}">
+       <patternset>
+   <include name="${dir.duplicatetrader}/*.class"/>
+   <include name="${dir.duplicatetrader}/defs/*.class"/>
+   <include name="${dir.duplicatetrader}/facade/DuplicateTraderManagerFacade.class"/>
+   <include name="${dir.duplicatetrader}/facade/DuplicateTraderManagerFacadeHome.class"/>
+      </patternset>
+  </fileset>
+
+  <fileset id="event.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.event}/*.class"/>
+      <include name="${dir.event}/defs/*.class"/>
+      <include name="${dir.event}/facade/EventManagerFacade.class"/>
+      <include name="${dir.event}/facade/EventManagerFacadeHome.class"/>
+      <include name="${dir.event}/types/**"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="ftppushexpress.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.ftppushexpress}/*.class"/>
+      <include name="${dir.ftppushexpress}/defs/*.class"/>
+      <include name="${dir.ftppushexpress}/facade/FTPPushExpressFacade.class"/>
+      <include name="${dir.ftppushexpress}/facade/FTPPushExpressFacadeHome.class"/>
+      <include name="${dir.ftppushexpress}/facade/LocalFTPPushExpressFacade.class"/>
+      <include name="${dir.ftppushexpress}/facade/LocalFTPPushExpressFacadeHome.class"/>      
+    </patternset>
+  </fileset>
+  
+  <fileset id="usersession.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.usersession}/*.class"/>
+       <include name="${dir.usersession}/defs/*.class"/>
+       <include name="${dir.usersession}/facade/UserSessionFacade.class"/>
+       <include name="${dir.usersession}/facade/UserSessionFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="messagestore.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.messagestore}/*.class"/>
+       <include name="${dir.messagestore}/defs/*.class"/>
+       <include name="${dir.messagestore}/facade/MessageStoreReaderFacade.class"/>
+       <include name="${dir.messagestore}/facade/MessageStoreReaderFacadeHome.class"/>
+       <include name="${dir.messagestore}/facade/MessageStoreWriterFacade.class"/>
+       <include name="${dir.messagestore}/facade/MessageStoreWriterFacadeHome.class"/>
+       <include name="${dir.messagestore}/facade/MessageStoreFacade.class"/>
+       <include name="${dir.messagestore}/facade/MessageStoreFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="mailbag.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.mailbag}/*.class"/>
+       <include name="${dir.mailbag}/defs/*.class"/>
+       <include name="${dir.mailbag}/reports/*.class"/>
+       <include name="${dir.mailbag}/facade/MailbagFacade.class"/>
+       <include name="${dir.mailbag}/facade/MailbagFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="onnettransform.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnettransform}/*.class"/>
+       <include name="${dir.onnettransform}/defs/*.class"/>
+       <include name="${dir.onnettransform}/facade/OnNetworkTransformFacade.class"/>
+       <include name="${dir.onnettransform}/facade/OnNetworkConfigFacade.class"/>
+       <include name="${dir.onnettransform}/facade/OnNetworkTransformFacadeHome.class"/>
+       <include name="${dir.onnettransform}/facade/OnNetworkConfigFacadeHome.class"/>
+       <include name="${dir.onnettransform}/facade/OnNetworkTransformCompleteEvent*.class"/>
+       <include name="${dir.onnettransform}/facade/OnNetworkTransformEvent*.class"/>
+       <include name="${dir.onnettransform}/facade/TransformContext*.class"/>
+       <include name="${dir.onnettransform}/facade/TransformResults*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="onnetmaptrack.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnetmaptrack}/*.class"/>
+       <include name="${dir.onnetmaptrack}/defs/*.class"/>
+       <include name="${dir.onnetmaptrack}/facade/OnNetworkMapTrackFacade.class"/>
+       <include name="${dir.onnetmaptrack}/facade/OnNetworkMapTrackFacadeHome.class"/>
+       <include name="${dir.onnetmaptrack}/facade/OnNetworkMapTrackEvent*.class"/>
+       <include name="${dir.onnetmaptrack}/facade/MapTrackContext*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="onnetrepository.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnetrepository}/*.class"/>
+       <include name="${dir.onnetrepository}/defs/*.class"/>
+       <include name="${dir.onnetrepository}/facade/OnNetworkRepositoryFacade.class"/>
+       <include name="${dir.onnetrepository}/facade/OnNetworkRepositoryFacadeHome.class"/>
+     </patternset>
+  </fileset>
+  
+  <fileset id="onnetimportexport.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnetimportexport}/*.class"/>
+       <include name="${dir.onnetimportexport}/defs/*.class"/>
+       <include name="${dir.onnetimportexport}/facade/IformsImportExportFacade.class"/>
+       <include name="${dir.onnetimportexport}/facade/IformsImportExportFacadeHome.class"/>
+     </patternset>
+  </fileset>
+       
+
+  <fileset id="onnetjmsbridge.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.onnetjmsbridge}/facade/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="mailbox.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.mailbox}/*.class"/>
+       <include name="${dir.mailbox}/defs/*.class"/>
+       <include name="${dir.mailbox}/facade/MailboxFacade.class"/>
+       <include name="${dir.mailbox}/facade/MailboxFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="network.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.network}/*.class"/>
+       <include name="${dir.network}/defs/*.class"/>
+       <include name="${dir.network}/facade/NetworkFacade.class"/>
+       <include name="${dir.network}/facade/NetworkFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="gateway.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.gateway}/framework/**"/>
+       <include name="${dir.gateway}/api/**"/>
+       <include name="${dir.gateway}/defs/**"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="rules.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.rules}/*.class"/>
+       <include name="${dir.rules}/api/**"/>
+       <include name="${dir.rules}/audit/**"/>
+       <include name="${dir.rules}/defs/**"/>
+       <include name="${dir.rules}/errors/**"/>
+       <include name="${dir.rules}/reports/**"/>
+       <include name="${dir.rules}/facade/RulesManagerFacade.class"/>
+       <include name="${dir.rules}/facade/RulesManagerFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="rules.inbound.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.rules.inbound}/*.class"/>
+       <include name="${dir.rules.inbound}/defs/**"/>
+       <include name="${dir.rules.inbound}/facade/InboundRuleFacade.class"/>
+       <include name="${dir.rules.inbound}/facade/InboundRuleFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="router.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.router}/*.class"/>
+       <include name="${dir.router}/defs/**"/>
+       <include name="${dir.router}/facade/RouterFacade.class"/>
+       <include name="${dir.router}/facade/RouterFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="reghelper.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.reghelper}/*.class"/>
+       <include name="${dir.reghelper}/defs/*.class"/>
+       <include name="${dir.reghelper}/facade/RegHelperFacade.class"/>
+       <include name="${dir.reghelper}/facade/RegHelperFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="user.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.user}/*.class"/>
+       <include name="${dir.user}/defs/*.class"/>
+       <include name="${dir.user}/audit/*.class"/>
+       <include name="${dir.user}/facade/UserFacade.class"/>
+       <include name="${dir.user}/facade/UserFacadeHome.class"/>
+       <include name="${dir.user}/facade/PasswordResetKeyFacade.class"/>
+       <include name="${dir.user}/facade/PasswordResetKeyFacadeHome.class"/>
+       <include name="${dir.user}/erp/*.class"/>
+       <include name="${dir.user}/erp/defs/*.class"/>
+       <include name="${dir.user}/erp/facade/ErpUserFacade.class"/>
+       <include name="${dir.user}/erp/facade/ErpUserFacadeHome.class"/>
+       <include name="${dir.user}/viewconfig/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="authorization.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.authorization}/*.class"/>
+       <include name="${dir.authorization}/defs/*.class"/>
+       <include name="${dir.authorization}/facade/AuthorizationFacade.class"/>
+       <include name="${dir.authorization}/facade/AuthorizationFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="security.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.security}/*.class"/>
+       <include name="${dir.security}/audit/*.class"/>
+       <include name="${dir.security}/defs/*.class"/>
+       <include name="${dir.security}/facade/AuthenticatorFacade.class"/>
+       <include name="${dir.security}/facade/AuthenticatorFacadeHome.class"/>
+       <include name="${dir.passwordmanagement}/*.class"/>
+       <include name="${dir.passwordmanagement}/defs/*.class"/>
+       <include name="${dir.passwordmanagement}/facade/PasswordRuleFacade.class"/>
+       <include name="${dir.passwordmanagement}/facade/PasswordRuleFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="pipeline.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.pipeline.servlet}/lib/util/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="broker.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.broker}/*.class"/>
+       <include name="${dir.broker}/defs/*.class"/>
+       <include name="${dir.broker}/facade/BrokerFacade.class"/>
+       <include name="${dir.broker}/facade/BrokerFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="registration.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.registration}/*.class"/>
+       <include name="${dir.registration}/defs/*.class"/>
+       <include name="${dir.registration}/facade/ProductOrderFacade.class"/>
+       <include name="${dir.registration}/facade/ProductOrderFacadeHome.class"/>
+       <include name="${dir.registration}/facade/RegistrationFacade.class"/>
+       <include name="${dir.registration}/facade/RegistrationFacadeHome.class"/>
+       <include name="${dir.registration.servlet}/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="country.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.country}/*.class"/>
+       <include name="${dir.country}/defs/*.class"/>
+       <include name="${dir.country}/facade/CountryFacade.class"/>
+       <include name="${dir.country}/facade/CountryFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="businessuser.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.businessuser}/*.class"/>
+       <include name="${dir.businessuser}/defs/*.class"/>
+       <include name="${dir.businessuser}/facade/BusinessUserFacade.class"/>
+       <include name="${dir.businessuser}/facade/BusinessUserFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="systemhealth.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.systemhealth}/*.class"/>
+       <include name="${dir.systemhealth}/defs/*.class"/>
+       <include name="${dir.systemhealth}/store/db/*.class"/>
+       <include name="${dir.systemhealth}/facade/TransactionSnapshotFacade.class"/>
+       <include name="${dir.systemhealth}/facade/TransactionSnapshotFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="billing.lib.files" dir="${buildmain}">
+     <patternset>
+
+	   <include name="${dir.billing}/audit/*.class"/>
+      
+       <include name="${dir.billing}/adjustment/*.class"/>
+       <include name="${dir.billing}/adjustment/defs/*.class"/>
+
+       <include name="${dir.billing}/program/*.class"/>
+       <include name="${dir.billing}/program/defs/*.class"/>
+
+       <include name="${dir.billing}/chargetype/*.class"/>
+       <include name="${dir.billing}/chargetype/defs/*.class"/>
+
+       <include name="${dir.billing}/*.class"/>
+       <include name="${dir.billing}/defs/*.class"/>
+       <include name="${dir.billing}/facade/BillingFacade.class"/>
+       <include name="${dir.billing}/facade/BillingFacadeHome.class"/>
+
+		<include name="${dir.billing}/premiumservice/*.class"/>
+	    <include name="${dir.billing}/premiumservice/defs/*.class"/>
+	    <include name="${dir.billing}/premiumservice/facade/*.class"/>
+	    <include name="${dir.billing}/premiumservice/store/*.class"/>
+	    <include name="${dir.billing}/premiumservice/store/db/*.class"/>
+    	
+		<include name="${dir.billing}/priceplan/*.class"/>
+	    <include name="${dir.billing}/priceplan/facade/*.class"/>
+     	<include name="${dir.billing}/priceplan/store/*.class"/>
+	    <include name="${dir.billing}/priceplan/store/db/*.class"/>
+
+		<include name="${dir.billing}/promotion/*.class"/>
+		<include name="${dir.billing}/promotion/facade/PromotionCodeFacade.class"/>
+		<include name="${dir.billing}/promotion/facade/PromotionCodeFacadeHome.class"/>
+     	
+     	<include name="${dir.billing}/prsummary/*.class"/>
+	   <include name="${dir.billing}/prsummary/defs/*.class"/>
+	   <include name="${dir.billing}/prsummary/facade/*.class"/>
+	   <include name="${dir.billing}/prsummary/store/*.class"/>
+       <include name="${dir.billing}/prsummary/store/db/*.class"/>
+     	
+       <include name="${dir.billing}/reports/*.class"/>
+       <include name="${dir.billing}/reports/defs/*.class"/>
+       <include name="${dir.billing}/reports/facade/UsageSummaryFacade.class"/>
+       <include name="${dir.billing}/reports/facade/UsageSummaryFacadeHome.class"/>
+       <include name="${dir.billing}/reports/facade/UsageReportFacade.class"/>
+       <include name="${dir.billing}/reports/facade/UsageReportFacadeHome.class"/>
+       <include name="${dir.billing}/reports/facade/ReportSummaryFacade.class"/>
+       <include name="${dir.billing}/reports/facade/ReportSummaryFacadeHome.class"/>
+       <include name="${dir.billing}/reports/revenue/*.class"/>
+       <include name="${dir.billing}/reports/transaction/*.class"/>
+       <include name="${dir.billing}/reports/tpusage/*.class"/>
+       <include name="${dir.billing}/reports/CustomerInvoice/*.class"/>
+       <include name="${dir.billing}/reports/chargetype/*.class"/>
+       <include name="${dir.billing}/reports/productChargetype/*.class"/>
+       <include name="${dir.billing}/reports/managedservices/*.class"/>
+       <include name="${dir.billing}/reports/interconnect/*.class"/>
+
+       <include name="${dir.billing}/reports/invoice/*.class"/>
+       <include name="${dir.billing}/reports/invoice/defs/*.class"/>
+       <include name="${dir.billing}/reports/invoice/facade/InvoiceReportFacade.class"/>
+       <include name="${dir.billing}/reports/invoice/facade/InvoiceReportFacadeHome.class"/>
+
+       <include name="${dir.billing}/reports/install/*.class"/>
+       <include name="${dir.billing}/reports/install/defs/*.class"/>
+       <include name="${dir.billing}/reports/install/facade/InstallReportFacade.class"/>
+       <include name="${dir.billing}/reports/install/facade/InstallReportFacadeHome.class"/>
+
+       <include name="${dir.billing}/service/*.class"/>
+       <include name="${dir.billing}/service/defs/*.class"/>
+
+       <include name="${dir.billing}/service/charge/*.class"/>
+       <include name="${dir.billing}/service/charge/defs/*.class"/>
+
+       <include name="${dir.billing}/billrun/*.class"/>
+       <include name="${dir.billing}/billrun/defs/*.class"/>
+       <include name="${dir.billing}/billrun/reports/*.class"/>
+       <include name="${dir.billing}/billrun/reports/defs/*.class"/>
+       <include name="${dir.billing}/billrun/facade/BillRunFacade.class"/>
+       <include name="${dir.billing}/billrun/facade/BillRunFacadeHome.class"/>
+       <include name="${dir.billing}/billrun/facade/BillRunHelper.class"/>
+       <include name="${dir.billing}/billrun/facade/BillRunHelperHome.class"/>
+
+       <include name="${dir.billing}/customer/*.class"/>
+ 	   <include name="${dir.billing}/customer/audit/*.class"/>
+       <include name="${dir.billing}/customer/defs/*.class"/>
+       <include name="${dir.billing}/customer/facade/CustomerFacade.class"/>
+       <include name="${dir.billing}/customer/facade/CustomerFacadeHome.class"/>
+       <include name="${dir.billing}/customer/facade/BusinessBillingProfileFacade.class"/>
+       <include name="${dir.billing}/customer/facade/BusinessBillingProfileFacadeHome.class"/>
+
+       <include name="${dir.billing}/customer/erp/*.class"/>
+       <include name="${dir.billing}/customer/erp/defs/*.class"/>
+       <include name="${dir.billing}/customer/erp/facade/ErpCustomerFacade.class"/>
+       <include name="${dir.billing}/customer/erp/facade/ErpCustomerFacadeHome.class"/>
+
+       <include name="${dir.billing}/customer/payer/*.class"/>
+       <include name="${dir.billing}/customer/payer/defs/*.class"/>
+       <include name="${dir.billing}/customer/payer/facade/PayerBeneficiaryFacade.class"/>
+       <include name="${dir.billing}/customer/payer/facade/PayerBeneficiaryFacadeHome.class"/>
+
+     	<include name="${dir.billing}/contract/*.class"/>
+     	<include name="${dir.billing}/contract/audit/*.class"/>
+     	<include name="${dir.billing}/contract/facade/ContractServiceFacade.class"/>
+     	<include name="${dir.billing}/contract/facade/ContractServiceFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+	  <fileset id="service.lib.files" dir="${buildmain}">
+	     <patternset>
+
+ 		    <include name="${dir.service}/crossreference/*.class"/>
+		    <include name="${dir.service}/crossreference/defs/*.class"/>
+		    <include name="${dir.service}/crossreference/facade/*.class"/>
+		    <include name="${dir.service}/crossreference/store/*.class"/>
+		    <include name="${dir.service}/crossreference/store/db/*.class"/>
+	     </patternset>
+	  </fileset>
+	
+	
+  <fileset id="sysconfig.lib.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.sysconfig}/*.class"/>
+        <include name="${dir.sysconfig}/store/*.class"/>
+        <include name="${dir.sysconfig}/store/db/*.class"/>
+        <include name="${dir.sysconfig}/facade/*.class"/>
+        <include name="${dir.sysconfig}/defs/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="fileconfig.lib.files" dir="${buildmain}">
+       <patternset>
+       <include name="${dir.fileconfig}/*.class"/>
+       <include name="${dir.fileconfig}/defs/*.class"/>
+       <include name="${dir.fileconfig}/facade/FileConfigurationFacade.class"/>
+       <include name="${dir.fileconfig}/facade/FileConfigurationFacadeHome.class"/>
+       <include name="${dir.fileconfig}/facade/LocalFileConfigurationFacade.class"/>
+       <include name="${dir.fileconfig}/facade/LocalFileConfigurationFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="x400.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.x400}/*.class"/>
+       <include name="${dir.x400}/defs/*.class"/>
+       <include name="${dir.x400}/facade/X400Facade.class"/>
+       <include name="${dir.x400}/facade/X400FacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="ediint.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.ediint}/*.class"/>
+       <include name="${dir.ediint}/modules/*.class"/>
+       <include name="${dir.ediint}/audit/*.class"/>
+       <include name="${dir.ediint}/agent/*.class"/>
+     </patternset>
+ </fileset>
+
+ <fileset id="webformsgw.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.webformsgw}/*.class"/>
+       <include name="${dir.webformsgw}/defs/*.class"/>
+     </patternset>
+ </fileset>
+ 
+
+
+  <fileset id="uihelper.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.uihelper}/*.class"/>
+       <include name="${dir.uihelper}/defs/*.class"/>
+       <include name="${dir.uihelper}/facade/UiHelperFacade.class"/>
+       <include name="${dir.uihelper}/facade/UiHelperFacadeHome.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="vcm.lib.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.vcm}/*.class"/>
+       <include name="${dir.vcm}/defs/*.class"/>
+     </patternset>
+  </fileset>
+
+  <fileset id="eventframework.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.eventframework}/*.class"/>
+      <include name="${dir.eventframework}/defs/*.class"/>
+      <include name="${dir.eventframework}/proxy/*.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="archivepurge.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.archive}/*.class"/>
+      <include name="${dir.archive}/admin/*.class"/>
+      <include name="${dir.archive}/admin/defs/*.class"/>
+      <include name="${dir.archive}/admin/facade/*.class"/>
+      <exclude name="${dir.archive}/admin/facade/*Local*.class"/>
+      <exclude name="${dir.archive}/admin/facade/*Bean*.class"/>
+      <include name="${dir.archive}/common/*.class"/>
+      <include name="${dir.archive}/admin/tasks/*.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="archiverepository.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.archive.repository}/*.class"/>
+      <include name="${dir.archive.repository}/admin/defs/*.class"/>
+      <include name="${dir.archive.repository}/admin/facade/*.class"/>
+      <exclude name="${dir.archive.repository}/admin/facade/*Bean*.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="systask.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.systask}/facade/*.class"/>
+      <include name="${dir.systask}/*.class"/>
+      <include name="${dir.systask}/event/*.class"/>
+      <exclude name="${dir.systask}/facade/*Local*.class"/>
+      <exclude name="${dir.systask}/facade/*Bean*.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="iwwebware.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.webware}/*.class"/>
+      <include name="${dir.webware}/defs/*.class"/>
+      <include name="${dir.webware}/event/*.class"/>
+    </patternset>
+  </fileset>
+  
+  <fileset id="webware.tracking.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.webware}/eventframework/*.class"/>
+      <include name="${dir.webware}/tracking/defs/*.class"/>
+      <include name="${dir.webware}/tracking/event/*.class"/>
+      <include name="${dir.webware}/tracking/store/db/*.class"/>
+      <include name="${dir.webware}/util/*.class"/>
+      <include name="${dir.webware}/util/db/*.class"/>
+      <include name="${dir.webware}/util/exception/*.class"/>
+      <include name="${dir.webware}/*.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="purge.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.archive}/purge/*.class"/>
+      <include name="${dir.archive}/purge/facade/*.class"/>
+      <include name="${dir.archive}/purge/store/*.class"/>
+      <exclude name="${dir.archive}/purge/facade/*Local*.class"/>
+      <exclude name="${dir.archive}/purge/facade/*Bean*.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="timerservice.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.timerservice}/*.class"/>
+      <include name="${dir.timerservice}/defs/*.class"/>
+      <include name="${dir.timerservice}/facade/ManagedTimerServiceFacade.class"/>
+      <include name="${dir.timerservice}/facade/ManagedTimerServiceFacadeHome.class"/>
+      <include name="${dir.timerservice}/facade/ManagedTimerServiceFacadeLocal.class"/>
+      <include name="${dir.timerservice}/facade/ManagedTimerServiceFacadeLocalHome.class"/>
+    </patternset>
+  </fileset>
+
+  <fileset id="resourcelock.lib.files" dir="${buildmain}">
+    <patternset>
+      <include name="${dir.resourcelock}/*.class"/>
+      <include name="${dir.resourcelock}/defs/*.class"/>
+      <include name="${dir.resourcelock}/facade/*.class"/>
+      <include name="${dir.resourcelock}/store/db/*.class"/>
+    </patternset>
+  </fileset>
+  
+  <target name="RainmakerServerLibJar" depends="compile, copyCustomClasses">
+    <mkdir dir="${dist.lib}/META-INF/lib"/>
+    <jar destfile="${dist.lib}/META-INF/lib/${common.jar}" duplicate="preserve">
+         <fileset dir="${build.propertyFileDir}">
+            <exclude name="**/jndi.properties"/>
+         </fileset>
+         <fileset refid="common.lib.files"/>
+         <fileset refid="resource.lib.files"/>
+         <fileset refid="gateways.config.files"/>
+         <fileset refid="adminevent.lib.files"/>
+         <fileset refid="alert.lib.files"/>
+         <fileset refid="audit.lib.files"/>
+         <fileset refid="authorization.lib.files"/>
+         <fileset refid="billing.lib.files"/>
+    	 <fileset refid="service.lib.files"/>
+    	 <fileset refid="bo.lib.files"/>
+         <fileset refid="broker.lib.files"/>
+         <fileset refid="business.lib.files"/>
+         <fileset refid="businessuser.lib.files"/>
+         <fileset refid="channel.lib.files"/>
+         <fileset refid="country.lib.files"/>
+         <fileset refid="docdef.lib.files"/>
+         <fileset refid="docmonitor.lib.files"/>
+         <fileset refid="dtsqueue.lib.files"/>
+         <fileset refid="docscheduler.lib.files"/>
+         <fileset refid="resourcethrottle.lib.files"/>
+         <fileset refid="notification.lib.files"/>
+         <fileset refid="document.lib.files"/>
+         <fileset refid="duplicatetrader.lib.files"/>
+         <fileset refid="event.lib.files"/>
+         <fileset refid="ftppushexpress.lib.files"/>
+         <fileset refid="sysconfig.lib.files"/>
+         <fileset refid="fileconfig.lib.files"/>
+         <fileset refid="gateway.lib.files"/>
+         <fileset refid="mailbag.lib.files"/>
+         <fileset refid="onnettransform.lib.files"/>
+         <fileset refid="onnetmaptrack.lib.files"/>
+         <fileset refid="onnetrepository.lib.files"/>
+         <fileset refid="onnetjmsbridge.lib.files"/>
+         
+         <fileset refid="mailbox.lib.files"/>
+         <fileset refid="messagestore.lib.files"/>
+         <fileset refid="network.lib.files"/>
+         <fileset refid="pipeline.lib.files"/>
+         <fileset refid="reghelper.lib.files"/>
+         <fileset refid="registration.lib.files"/>
+         <fileset refid="router.lib.files"/>
+         <fileset refid="rules.inbound.lib.files"/>
+         <fileset refid="rules.lib.files"/>
+         <fileset refid="security.lib.files"/>
+         <fileset refid="user.lib.files"/>
+         <fileset refid="usersession.lib.files"/>
+         <fileset refid="x400.lib.files"/>
+         <fileset refid="ediint.lib.files"/>
+         <fileset refid="webformsgw.lib.files"/>
+         <fileset refid="uihelper.lib.files"/>
+         <fileset refid="vcm.lib.files"/>
+         <fileset refid="systemhealth.lib.files"/>
+         <fileset refid="eventframework.lib.files"/>
+         <fileset refid="archivepurge.lib.files"/>
+         <fileset refid="archiverepository.lib.files"/>
+         <fileset refid="systask.lib.files"/>
+         <fileset refid="iwwebware.lib.files"/>
+         <fileset refid="webware.tracking.lib.files"/>
+         <fileset refid="purge.lib.files"/>
+         <fileset refid="timerservice.lib.files"/>
+         <fileset refid="resourcelock.lib.files"/>
+    </jar>
+  </target>
+  
+  <target name="WebwareServerLibJar" depends="compile, copyCustomClasses">
+    <mkdir dir="${dist.webware}/META-INF/lib"/>
+    <jar destfile="${dist.webware}/META-INF/lib/${webware.jar}" duplicate="preserve">
+         <fileset dir="${build.propertyFileDir}">
+            <exclude name="**/jndi.properties"/>
+         </fileset>
+         <fileset refid="webware.tracking.lib.files"/>
+         <fileset refid="onnetimportexport.lib.files"/>
+    </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Mailbag_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="mailbag.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.mailbag}/**"/>
+        <include name="${dir.mailbag}/facade/**"/>
+        <include name="${dir.mailbag}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Mailbag_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.mailbag}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Mailbag_ejb.jar" manifest="${manifest}">
+        <fileset refid="mailbag.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the OnNetworkTransform_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="onnettransform.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.onnettransform}/**"/>
+        <include name="${dir.onnettransform}/facade/**"/>
+        <include name="${dir.onnettransform}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="OnNetworkTransform_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.onnettransform}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist.onx}/OnNetworkTransform_ejb.jar" manifest="${manifest.onx}">
+        <fileset refid="onnettransform.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the OnNetworkMapTrack_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="onnetmaptrack.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.onnetmaptrack}/**"/>
+        <include name="${dir.onnetmaptrack}/facade/**"/>
+        <include name="${dir.onnetmaptrack}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="OnNetworkMapTrack_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.onnetmaptrack}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist.onx}/OnNetworkMapTrack_ejb.jar" manifest="${manifest.onx}">
+        <fileset refid="onnetmaptrack.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the OnNetworkRepository_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="onnetrepository.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.onnetrepository}/**"/>
+        <include name="${dir.onnetrepository}/facade/**"/>
+        <include name="${dir.onnetrepository}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="OnNetworkRepository_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.onnetrepository}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist.onx}/OnNetworkRepository_ejb.jar" manifest="${manifest.onx}">
+        <fileset refid="onnetrepository.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the OnNetworkImportExport_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="onnetimportexport.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.onnetimportexport}/**"/>
+        <include name="${dir.onnetimportexport}/facade/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="OnNetworkImportExport_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.onnetimportexport}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist.webware}/OnNetworkImportExport_ejb.jar" manifest="${manifest.onx}">
+        <fileset refid="onnetimportexport.ejb.files"/>
+     </jar>
+  </target>
+  
+
+  <!-- ================================================================== -->
+  <!-- Generate the OnNetworkJMSBridge_CORE_ejb JAR file                  -->
+  <!-- ================================================================== -->
+  <fileset id="onnetjmsbridge.core.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.onnetjmsbridge}/facade/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="OnNetworkJMSBridge_CORE_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir  dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.onnetjmsbridge}/config/core" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/OnNetworkJMSBridge_CORE_ejb.jar" manifest="${manifest}">
+        <fileset refid="onnetjmsbridge.core.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the OnNetworkJMSBridge_ONX_ejb JAR file                   -->
+  <!-- ================================================================== -->
+  <fileset id="onnetjmsbridge.onx.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.onnetjmsbridge}/facade/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="OnNetworkJMSBridge_ONX_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir  dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.onnetjmsbridge}/config/onx" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist.onx}/OnNetworkJMSBridge_ONX_ejb.jar" manifest="${manifest.onx}">
+        <fileset refid="onnetjmsbridge.onx.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Mailbox_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="mailbox.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.mailbox}/facade/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Mailbox_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.mailbox}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Mailbox_ejb.jar" manifest="${manifest}">
+        <fileset refid="mailbox.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Network_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="network.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.network}/facade/**"/>
+        <include name="${dir.network}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Network_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.network}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Network_ejb.jar" manifest="${manifest}">
+        <fileset refid="network.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the BusinessObject_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="bo.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.bo}/facade/**"/>
+        <include name="${dir.bo}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="BusinessObject_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.bo}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/BusinessObject_ejb.jar" manifest="${manifest}">
+        <fileset refid="bo.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the AdminEvent_ejb JAR file -->
+  <!-- ================================================================== -->
+
+  <fileset id="adminevent.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.adminevent}/facade/*.class"/>
+        <include name="${dir.adminevent}/audit/**"/>
+        <include name="${dir.adminevent}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="AdminEvent_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.adminevent}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/AdminEvent_ejb.jar" manifest="${manifest}">
+        <fileset refid="adminevent.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Alert_ejb JAR file -->
+  <!-- ================================================================== -->
+
+  <fileset id="alert.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.alert}/facade/*.class"/>
+        <include name="${dir.alert}/audit/**"/>
+        <include name="${dir.alert}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Alert_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.alert}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Alert_ejb.jar" manifest="${manifest}">
+        <fileset refid="alert.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Auditor_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="auditor.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.audit}/facade/**"/>
+        <include name="${dir.audit}/store/**"/>
+        <include name="${dir.audit}/spi/Auditor.class"/>
+        <include name="${dir.audit}/spi/AuditorHome.class"/>
+        <include name="${dir.audit}/notification/audit/**"/>
+        <include name="${dir.audit}/notification/server/**"/>
+        <include name="${dir.audit}/notification/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Auditor_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.audit}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Auditor_ejb.jar" manifest="${manifest}">
+        <fileset refid="auditor.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Business_ejb JAR file -->
+  <!-- ================================================================== -->
+
+  <fileset id="business.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.business}/facade/*.class"/>
+        <include name="${dir.business}/store/**"/>
+   <include name="${dir.business}/audit/**"/>
+     </patternset>
+  </fileset>
+
+
+  <target name="Business_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.business}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Business_ejb.jar" manifest="${manifest}">
+        <fileset refid="business.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Channel_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="channel.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.channel}/facade/*.class"/>
+        <include name="${dir.channel}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Channel_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.channel}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Channel_ejb.jar" manifest="${manifest}">
+        <fileset refid="channel.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Entity_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="entity.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.entity}/facade/*.class"/>
+        <include name="${dir.entity}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Entity_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.entity}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Entity_ejb.jar" manifest="${manifest}">
+        <fileset refid="entity.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the BusinessUser_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="businessuser.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.businessuser}/facade/*.class"/>
+        <include name="${dir.businessuser}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="BusinessUser_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.businessuser}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/BusinessUser_ejb.jar" manifest="${manifest}">
+        <fileset refid="businessuser.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the SystemHealth_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="systemhealth.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.systemhealth}/facade/*.class"/>
+        <include name="${dir.systemhealth}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="compile.ejb.rmear" >
+      <antcall target="_compile.ejb" >
+         <param name="compile.ejb.earfile" value="${dist}/${rmear}" />
+         <param name="compile.ejb.classpath" value="compile.ejb.classpath.rmear" />
+      </antcall>
+  </target>
+
+  <target name="compile.ejb.onxear" >
+      <antcall target="_compile.ejb" >
+         <param name="compile.ejb.earfile" value="${dist}/${onxear}" />
+         <param name="compile.ejb.classpath" value="compile.ejb.classpath.onxear" />
+      </antcall>
+  </target>
+
+  <target name="_compile.ejb" >
+
+         <property name="appc.dir" value="${build}/appc" />
+
+         <delete dir="${appc.dir}" />
+         <java classname="weblogic.appc" fork="true" failonerror="true">
+        <arg line="-verbose -O -compiler javac -version" />
+        <jvmarg value="-Djava.io.tmpdir=${appc.dir}" />
+        <jvmarg value="-Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0" />
+            <classpath>
+              <path refid="weblogic.class.path"/>
+              <path refid="${compile.ejb.classpath}"/>
+            </classpath>
+         </java>
+         <java classname="weblogic.appc" fork="true" maxmemory="256M" failonerror="true">
+        <arg line="${compile.ejb.earfile} -verbose" />
+        <jvmarg value="-Djava.io.tmpdir=${appc.dir}" />
+        <jvmarg value="-Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0" />
+            <classpath>
+              <path refid="weblogic.class.path"/>
+              <path refid="${compile.ejb.classpath}"/>
+            </classpath>
+         </java>
+  </target>
+
+  <target name="precompile.ejbs"
+          if="COMPILEEJB" >
+    <antcall target="compile.ejb.rmear" />
+    <antcall target="compile.ejb.onxear" />
+  </target>
+  <target name="SystemHealth_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.systemhealth}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/SystemHealth_ejb.jar" manifest="${manifest}">
+        <fileset refid="systemhealth.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Document_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="document.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.document}/facade/*.class"/>
+        <include name="${dir.document}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Document_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.document}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Document_ejb.jar" manifest="${manifest}">
+        <fileset refid="document.ejb.files"/>
+     </jar>
+  </target>
+
+   <fileset id="document.reports.ejb.files" dir="${buildmain}">
+      <patternset>
+         <include name="${meta}/**"/>
+         <include name="${dir.document}/reports/facade/**"/>
+         <include name="${dir.document}/reports/store/**"/>
+      </patternset>
+   </fileset>
+
+   <target name="DocumentReports_ejb" depends="compile">
+      <delete dir="${buildmain}/${meta}" />
+      <mkdir dir="${buildmain}/${meta}" />
+      <copy todir="${buildmain}/${meta}" >
+         <fileset dir="${srcmain}/${dir.document}/reports/config" includes="**/*.xml,**/*.config"/>
+      </copy>
+      <jar jarfile="${dist}/lib/DocumentReports_ejb.jar" manifest="${manifest}">
+         <fileset refid="document.reports.ejb.files"/>
+      </jar>
+   </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the DuplicateTrader_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="duplicatetrader.ejb.files" dir="${buildmain}">
+      <patternset>
+   <include name="${meta}/**"/>
+   <include name="${dir.duplicatetrader}/facade/*.class"/>
+   <include name="${dir.duplicatetrader}/store/**"/>
+      </patternset>
+  </fileset>
+
+  <target name="DuplicateTrader_ejb" depends="compile">
+      <delete dir="${buildmain}/${meta}" />
+      <mkdir dir="${buildmain}/${meta}" />
+      <copy todir="${buildmain}/${meta}" >
+          <fileset dir="${srcmain}/${dir.duplicatetrader}/config" includes="**/*.xml"/>
+      </copy>
+      <jar jarfile="${dist}/lib/DuplicateTrader_ejb.jar" manifest="${manifest}">
+         <fileset refid="duplicatetrader.ejb.files"/>
+      </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Event_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="event.ejb.files" dir="${buildmain}">
+        <patternset>
+           <include name="${meta}/**"/>
+           <include name="${dir.event}/facade/**"/>
+           <include name="${dir.event}/store/**"/>
+        </patternset>
+     </fileset>
+
+     <target name="Event_ejb" depends="compile">
+        <delete dir="${buildmain}/${meta}" />
+        <mkdir dir="${buildmain}/${meta}" />
+        <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.event}/config" includes="**/*.xml"/>
+        </copy>
+        <jar jarfile="${dist}/lib/Event_ejb.jar" manifest="${manifest}">
+           <fileset refid="event.ejb.files"/>
+        </jar>
+ </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the FTPPushExpress_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="ftppushexpress.ejb.files" dir="${buildmain}">
+        <patternset>
+           <include name="${meta}/**"/>
+           <include name="${dir.ftppushexpress}/facade/**"/>
+           <include name="${dir.ftppushexpress}/store/**"/>
+        </patternset>
+     </fileset>
+
+     <target name="FTPPushExpress_ejb" depends="compile">
+        <delete dir="${buildmain}/${meta}" />
+        <mkdir dir="${buildmain}/${meta}" />
+        <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.ftppushexpress}/config" includes="**/*.xml"/>
+        </copy>
+        <jar jarfile="${dist}/lib/FTPPushExpress_ejb.jar" manifest="${manifest}">
+           <fileset refid="ftppushexpress.ejb.files"/>
+        </jar>
+ </target> 
+
+  <!-- ================================================================== -->
+  <!-- Generate the DocMonitor_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="docmonitor.ejb.files" dir="${buildmain}">
+        <patternset>
+           <include name="${meta}/**"/>
+           <include name="${dir.docmonitor}/facade/**"/>
+           <include name="${dir.docmonitor}/store/**"/>
+           <include name="${dir.docmonitor}/processor/**"/>
+           <include name="${dir.docmonitor}/saxutils/**"/>
+	  	   <include name="${dir.docmonitor}/tasks/**"/>
+        </patternset>
+     </fileset>
+
+     <target name="DocMonitor_ejb" depends="compile">
+        <delete dir="${buildmain}/${meta}" />
+        <mkdir dir="${buildmain}/${meta}" />
+        <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.docmonitor}/config" includes="**/*.xml"/>
+        </copy>
+        <jar jarfile="${dist}/lib/DocMonitor_ejb.jar" manifest="${manifest}">
+           <fileset refid="docmonitor.ejb.files"/>
+        </jar>
+     </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the DTSQueue_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="dtsqueue.ejb.files" dir="${buildmain}">
+        <patternset>
+           <include name="${meta}/**"/>
+           <include name="${dir.dtsqueue}/facade/**"/>
+           <include name="${dir.dtsqueue}/store/**"/>
+        </patternset>
+     </fileset>
+
+     <target name="DTSQueue_ejb" depends="compile">
+        <delete dir="${buildmain}/${meta}" />
+        <mkdir dir="${buildmain}/${meta}" />
+        <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.dtsqueue}/config" includes="**/*.xml"/>
+        </copy>
+        <jar jarfile="${dist}/lib/DTSQueue_ejb.jar" manifest="${manifest}">
+           <fileset refid="dtsqueue.ejb.files"/>
+        </jar>
+     </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the FileConfiguration_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="fileconfig.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.fileconfig}/facade/**"/>
+        <include name="${dir.fileconfig}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="FileConfiguration_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.fileconfig}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/FileConfiguration_ejb.jar" manifest="${manifest}">
+        <fileset refid="fileconfig.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the DocumentScheduler_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="docscheduler.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.docscheduler}/facade/**"/>
+        <include name="${dir.docscheduler}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="DocumentScheduler_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.docscheduler}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/DocumentScheduler_ejb.jar" manifest="${manifest}">
+        <fileset refid="docscheduler.ejb.files"/>
+     </jar>
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Generate the ResourceThrottle_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="resourcethrottle.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.resourcethrottle}/facade/**"/>
+        <include name="${dir.resourcethrottle}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="ResourceThrottle_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.resourcethrottle}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/ResourceThrottle_ejb.jar" manifest="${manifest}">
+        <fileset refid="resourcethrottle.ejb.files"/>
+     </jar>
+  </target>  
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Sys_Config_ejb JAR file -->
+  <!-- ================================================================== -->
+
+    <fileset id="sysconfig.ejb.files" dir="${buildmain}">
+       <patternset>
+          <include name="${meta}/**"/>
+          <include name="${dir.sysconfig}/facade/**"/>
+          <include name="${dir.sysconfig}/store/**"/>
+          <include name="${dir.sysconfig}/**"/>
+       </patternset>
+    </fileset>
+
+      <target name="Sys_Config_ejb" depends="compile">
+         <delete dir="${buildmain}/${meta}" />
+         <mkdir dir="${buildmain}/${meta}" />
+         <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.sysconfig}/config" includes="**/*.xml,**/*.config"/>
+         </copy>
+         <jar jarfile="${dist}/lib/Sys_Config_ejb.jar" manifest="${manifest}">
+            <fileset refid="sysconfig.ejb.files"/>
+         </jar>
+      </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the MessageStore_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="messagestore.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.messagestore}/facade/*.class"/>
+        <include name="${dir.messagestore}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="MessageStore_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.messagestore}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/MessageStore_ejb.jar" manifest="${manifest}">
+        <fileset refid="messagestore.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the GatewayFramework_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="gateway.framework.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.gateway}/framework/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="GatewayFramework_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.gateway}/framework/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/GatewayFramework_ejb.jar" manifest="${manifest}">
+        <fileset refid="gateway.framework.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the RulesEngine_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="rules.engine.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.rules}/engine/**"/>
+        <include name="${dir.rules}/facade/**"/>
+        <include name="${dir.rules}/store/**"/>
+        <include name="${dir.rules}/router/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="RulesEngine_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.rules}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/RulesEngine_ejb.jar" manifest="${manifest}">
+        <fileset refid="rules.engine.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the InboundRule_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="inbound.rules.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.rules.inbound}/facade/**"/>
+        <include name="${dir.rules.inbound}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="InboundRule_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.rules.inbound}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/InboundRule_ejb.jar" manifest="${manifest}">
+        <fileset refid="inbound.rules.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Router_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="router.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.router}/facade/**"/>
+        <include name="${dir.router}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Router_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.router}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Router_ejb.jar" manifest="${manifest}">
+        <fileset refid="router.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the UserSession_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="usersession.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.usersession}/facade/*.class"/>
+        <include name="${dir.usersession}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="UserSession_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.usersession}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/UserSession_ejb.jar" manifest="${manifest}">
+        <fileset refid="usersession.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Billing_ejb related EJB JAR file -->
+  <!-- ================================================================== -->
+
+  <fileset id="billing.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+
+
+        <include name="${dir.billing}/facade/**"/>
+        <include name="${dir.billing}/store/**"/>
+
+        <include name="${dir.billing}/chargetype/store/**"/>
+
+        <include name="${dir.billing}/service/store/**"/>
+
+        <include name="${dir.billing}/service/charge/store/**"/>
+ 
+      	<include name="${dir.billing}/program/store/**"/>
+     	
+        <include name="${dir.billing}/premiumservice/store/db.**"/>
+     	<include name="${dir.billing}/premiumservice/facade/**"/>
+     	<include name="${dir.billing}/premiumservice/store/**"/>
+     	
+		<include name="${dir.billing}/priceplan/*.class"/>
+	    <include name="${dir.billing}/priceplan/store/*.class"/>
+	    <include name="${dir.billing}/priceplan/store/db/*.class"/>
+	    <include name="${dir.billing}/priceplan/facade/*.class"/>
+
+	    <include name="${dir.billing}/promotion/facade/**"/>
+	    <include name="${dir.billing}/promotion/store/**"/>
+     	
+  	    <include name="${dir.billing}/prsummary/facade/**"/>
+ 	    <include name="${dir.billing}/prsummary/store/**"/>
+     	
+        <include name="${dir.billing}/adjustment/store/**"/>
+
+        <include name="${dir.billing}/billrun/facade/**"/>
+        <include name="${dir.billing}/billrun/store/**"/>
+        <include name="${dir.billing}/billrun/reports/store/**"/>
+
+        <include name="${dir.billing}/audit/**"/>
+        <include name="${dir.billing}/audit/store/**"/>
+		
+     	<include name="${dir.billing}/contract/facade/**"/>
+     	<include name="${dir.billing}/contract/store/**"/>
+     	
+        <include name="${dir.billing}/customer/facade/**"/>
+        <include name="${dir.billing}/customer/store/**"/>
+        <include name="${dir.billing}/customer/payer/facade/**"/>
+        <include name="${dir.billing}/customer/payer/store/**"/>
+     	
+     	
+     </patternset>
+  </fileset>
+	  <!-- ================================================================== -->
+	  <!-- Generate the Billing_ejb related EJB JAR file -->
+	  <!-- ================================================================== -->
+
+  <fileset id="billing.customer.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.billing}/customer/facade/**"/>
+        <include name="${dir.billing}/customer/store/**"/>
+        <include name="${dir.billing}/customer/payer/facade/**"/>
+        <include name="${dir.billing}/customer/payer/store/**"/>
+        <include name="${dir.billing}/customer/erp/facade/**"/>
+        <include name="${dir.billing}/customer/erp/store/**"/>
+        <include name="${dir.billing}/customer/audit/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Billing_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.billing}/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Billing_ejb.jar" manifest="${manifest}">
+        <fileset refid="billing.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <target name="Billing_Customer_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.billing}/customer/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Billing_Customer_ejb.jar" manifest="conf/billing_ejb_manifest.mf">
+        <fileset refid="billing.customer.ejb.files"/>
+     </jar>
+  </target>
+
+  <fileset id="billing.reports.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.billing}/reports/facade/**"/>
+        <include name="${dir.billing}/reports/invoice/facade/**"/>
+        <include name="${dir.billing}/reports/store/**"/>
+        <include name="${dir.billing}/reports/install/facade/**"/>
+        <include name="${dir.billing}/reports/install/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="BillingReports_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.billing}/reports/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/BillingReports_ejb.jar" manifest="conf/billing_ejb_manifest.mf">
+        <fileset refid="billing.reports.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Service_EJB JAR file -->
+  <!-- ================================================================== -->
+	  <fileset id="service.ejb.files" dir="${buildmain}">
+	     <patternset>
+	        <include name="${meta}/**"/>
+	     	
+			<include name="${dir.service}/crossreference/*.class"/>
+		    <include name="${dir.service}/crossreference/store/*.class"/>
+		    <include name="${dir.service}/crossreference/store/db/*.class"/>
+		    <include name="${dir.service}/crossreference/facade/*.class"/>
+
+	     </patternset>
+	  </fileset>
+
+	
+	
+	<target name="Service_ejb" depends="compile">
+	     <delete dir="${buildmain}/${meta}" />
+	     <mkdir dir="${buildmain}/${meta}" />
+	    <copy todir="${buildmain}/${meta}" >
+       		<fileset dir="${srcmain}/${dir.service}/crossreference/config" includes="**/*.xml,**/*.config"/>
+    	</copy>		
+	     <jar jarfile="${dist}/lib/Service_ejb.jar" manifest="${manifest}">
+	        <fileset refid="service.ejb.files"/>
+	     </jar>
+	  </target>
+	
+  <!-- ================================================================== -->
+  <!-- Generate the VCM_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="vcm.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.vcm}/facade/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="VCM_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.vcm}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/VCM_ejb.jar" manifest="${manifest}">
+        <fileset refid="vcm.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the pipeline WAR file  -->
+  <!-- ================================================================== -->
+  <fileset id="pipeline.war.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.pipeline.servlet}/PipelineServlet.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="pipeline_war" depends="compile">
+     <war destfile="${dist}/lib/${pipeline.servlet}.war"
+          manifest="conf/gw_manifest.mf"
+          webxml="${srcmain}/${dir.pipeline.servlet}/config/web.xml">
+        <classes refid="pipeline.war.files"/>
+        <webinf  dir="${srcmain}/${dir.pipeline.servlet}/config" excludes="web.xml"/>
+     </war>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the VCM WAR file -->
+  <!-- ================================================================== -->
+  <fileset id="vcm.war.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.vcm.servlet}/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="vcm_war" depends="compile,RainmakerServerLibJar">
+     <war destfile="${deploy.GW}/apps/${vcm.servlet}.war"
+          webxml="${srcmain}/${dir.vcm.servlet}/config/web.xml">
+        <lib file="${dist.lib}/META-INF/lib/${common.jar}"/>
+        <classes refid="vcm.war.files"/>
+        <webinf  dir="${srcmain}/${dir.vcm.servlet}/config" excludes="web.xml"/>
+     </war>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the HttpService WAR file  -->
+  <!-- ================================================================== -->
+  <fileset id="httpservice.war.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.httpservice.servlet}/**"/>
+        <include name="${dir.httpservice.servlet}/defs/**"/>
+        <include name="${dir.httpservice.servlet}/lib/**"/>
+        <include name="${dir.httpservice.servlet}/services/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="httpservice_war" depends="compile,RainmakerServerLibJar">
+     <war destfile="${deploy.GW}/apps/${httpservice.servlet}.war" webxml="${srcmain}/${dir.httpservice.servlet}/config/web.xml">
+        <lib file="${dist.lib}/META-INF/lib/${common.jar}"/>
+        <classes refid="httpservice.war.files"/>
+        <webinf  dir="${srcmain}/${dir.httpservice.servlet}/config" excludes="web.xml"/>
+     </war>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the Registration_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="registration.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.registration}/**"/>
+        <exclude name="${dir.registration}/Registration.*"/>
+        <exclude name="${dir.registration}/servlet/RegistrationServlet.*"/>
+        <exclude name="${dir.registration}/reghelper/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Registration_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.registration}/config" />
+     </copy>
+     <jar jarfile="${dist}/lib/Registration_ejb.jar" manifest="${manifest}">
+        <fileset refid="registration.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the Registration WAR file -->
+  <!-- ================================================================== -->
+  <fileset id="registration.war.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.registration.servlet}/RegistrationServlet.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="registration_war" depends="compile,RainmakerServerLibJar">
+     <!-- Generate the WAR file and place into ${dist} directory -->
+     <war destfile="${deploy.GW}/apps/${registration.servlet}.war" webxml="${srcmain}/${dir.registration.servlet}/config/web.xml">
+        <lib file="${dist.lib}/META-INF/lib/${common.jar}"/>
+        <classes refid="registration.war.files"/>
+        <webinf  dir="${srcmain}/${dir.registration.servlet}/config" excludes="web.xml"/>
+     </war>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the RegHelper_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="reghelper.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.reghelper}/facade/*.class"/>
+        <include name="${dir.reghelper}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="RegHelper_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.registration}/reghelper/config" />
+     </copy>
+     <jar jarfile="${dist}/lib/RegHelper_ejb.jar" manifest="${manifest}">
+        <fileset refid="reghelper.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the User_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="user.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.user}/facade/**"/>
+        <include name="${dir.user}/store/**"/>
+        <include name="${dir.user}/erp/facade/**"/>
+        <include name="${dir.user}/erp/store/**"/>
+        <include name="${dir.user}/audit/**"/>
+     	<include name="${dir.user}/viewconfig/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="User_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.user}/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/User_ejb.jar" manifest="${manifest}">
+        <fileset refid="user.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the systask_ejb JAR file -->
+  <!-- ================================================================== -->
+    <fileset id="systask.ejb.files" dir="${buildmain}">
+         <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.systask}/**"/>
+            <include name="${dir.systask}/facade/**"/>
+         </patternset>
+      </fileset>
+
+    <target name="Systask_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.systask}/config" includes="*.xml"/>
+     </copy>
+     <jar destfile="${dist}/lib/Systask_ejb.jar" manifest="${manifest}">
+        <fileset refid="systask.ejb.files"/>
+     </jar>
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Generate the Archive_ejb JAR file -->
+  <!-- ================================================================== -->
+    <fileset id="archivepurge.ejb.files" dir="${buildmain}">
+         <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.archive}/admin/**"/>
+            <include name="${dir.archive}/common/**"/>
+         </patternset>
+      </fileset>
+
+    <target name="Archive_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.archive}/admin/config" includes="*.xml"/>
+     </copy>
+     <jar destfile="${dist}/lib/Archive_ejb.jar" manifest="${manifest}">
+        <fileset refid="archivepurge.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the ArchiveRepository_ejb JAR file -->
+  <!-- ================================================================== -->
+    <fileset id="archiverepository.ejb.files" dir="${buildmain}">
+         <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.archive}/common/**"/>
+            <include name="${dir.archive.repository}/**"/>
+         </patternset>
+    </fileset>
+
+    <target name="ArchiveRepository_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.archive.repository}/config" includes="*.xml"/>
+     </copy>
+     <jar destfile="${dist}/lib/ArchiveRepository_ejb.jar" manifest="${manifest}">
+        <fileset refid="archiverepository.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Purge_ejb JAR file -->
+  <!-- ================================================================== -->
+    <fileset id="purge.ejb.files" dir="${buildmain}">
+         <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.archive}/purge/**"/>
+         </patternset>
+      </fileset>
+
+    <target name="Purge_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.archive}/purge/config" includes="*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Purge_ejb.jar" manifest="${manifest}">
+        <fileset refid="purge.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+      <!-- Generate the Authorization_ejb JAR file -->
+      <!-- ================================================================== -->
+      <fileset id="authorization.ejb.files" dir="${buildmain}">
+         <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.authorization}/facade/**"/>
+            <include name="${dir.authorization}/store/**"/>
+         </patternset>
+      </fileset>
+
+      <target name="Authorization_ejb" depends="compile">
+         <delete dir="${buildmain}/${meta}" />
+         <mkdir dir="${buildmain}/${meta}" />
+         <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.authorization}/config" includes="**/*.xml,**/*.config"/>
+         </copy>
+         <jar jarfile="${dist}/lib/Authorization_ejb.jar" manifest="${manifest}">
+            <fileset refid="authorization.ejb.files"/>
+         </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Security_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="security.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.security}/facade/**"/>
+        <include name="${dir.security}/store/**"/>
+        <include name="${dir.passwordmanagement}/facade/**"/>
+        <include name="${dir.passwordmanagement}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Security_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.security}/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Security_ejb.jar" manifest="${srcmain}/${dir.security}/config/ejb_manifest.mf">
+        <fileset refid="security.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Broker_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="broker.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.broker}/facade/**"/>
+        <include name="${dir.broker}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Broker_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.broker}/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Broker_ejb.jar" manifest="${manifest}">
+        <fileset refid="broker.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Country_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="country.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.country}/facade/**"/>
+        <include name="${dir.country}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Country_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.country}/config" includes="**/*.xml,**/*.config"/>
+     </copy>
+     <jar jarfile="${dist}/lib/Country_ejb.jar" manifest="${manifest}">
+        <fileset refid="country.ejb.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the X400_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="x400.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.x400}/facade/**"/>
+        <include name="${dir.x400}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="X400_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.x400}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/X400_ejb.jar" manifest="${manifest}">
+        <fileset refid="x400.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the EdiInt_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="ediint.ejb.files" dir="${buildmain}">
+     <patternset>
+       <include name="${meta}/**"/>
+       <include name="${dir.ediint}/audit/**"/>
+    </patternset>
+  </fileset>
+
+  <target name="EdiInt_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+       <fileset dir="${srcmain}/${dir.ediint}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/EdiInt_ejb.jar" manifest="${manifest}">
+       <fileset refid="ediint.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the WebFormsGW_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="webformsgw.ejb.files" dir="${buildmain}">
+     <patternset>
+       <include name="${meta}/**"/>
+       <include name="${dir.webformsgw}/**"/>
+       <include name="${dir.webformsgw}/tracking/**"/>
+    </patternset>
+  </fileset>
+
+  <target name="WebFormsGW_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+       <fileset dir="${srcmain}/${dir.webformsgw}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/WebFormsGW_ejb.jar" manifest="${manifest}">
+       <fileset refid="webformsgw.ejb.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the UiHelper_ejb JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="uihelper.ejb.files" dir="${buildmain}">
+     <patternset>
+        <include name="${meta}/**"/>
+        <include name="${dir.uihelper}/facade/*.class"/>
+        <include name="${dir.uihelper}/store/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="UiHelper_ejb" depends="compile">
+     <delete dir="${buildmain}/${meta}" />
+     <mkdir dir="${buildmain}/${meta}" />
+     <copy todir="${buildmain}/${meta}" >
+        <fileset dir="${srcmain}/${dir.uihelper}/config" includes="**/*.xml"/>
+     </copy>
+     <jar jarfile="${dist}/lib/UiHelper_ejb.jar" manifest="${manifest}">
+        <fileset refid="uihelper.ejb.files"/>
+     </jar>
+  </target>
+
+   <!-- ================================================================== -->
+   <!-- Generate the EventFramework_ejb JAR file -->
+   <!-- ================================================================== -->
+
+   <fileset id="eventframework.ejb.files" dir="${buildmain}">
+        <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.eventframework}/facade/**"/>
+         </patternset>
+    </fileset>
+
+    <target name="EventFramework_ejb" depends="compile">
+         <delete dir="${buildmain}/${meta}" />
+         <mkdir dir="${buildmain}/${meta}" />
+         <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.eventframework}/config" includes="**/*.xml"/>
+         </copy>
+
+         <jar jarfile="${dist}/lib/EventFramework_ejb.jar" manifest="${manifest}">
+            <fileset refid="eventframework.ejb.files"/>
+         </jar>
+   </target>
+
+   <!-- ================================================================== -->
+   <!-- Generate the Notification_ejb JAR file -->
+   <!-- ================================================================== -->
+   <fileset id="notification.ejb.files" dir="${buildmain}">
+        <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.notification}/facade/**"/>
+            <include name="${dir.notification}/store/defs/**"/>
+            <include name="${dir.notification}/store/db/**"/>
+         </patternset>
+    </fileset>
+
+    <target name="Notification_ejb" depends="compile">
+         <delete dir="${buildmain}/${meta}" />
+         <mkdir dir="${buildmain}/${meta}" />
+         <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.notification}/config" includes="**/*.xml"/>
+         </copy>
+
+         <jar jarfile="${dist}/lib/Notification_ejb.jar" manifest="${manifest}">
+            <fileset refid="notification.ejb.files"/>
+         </jar>
+   </target>
+
+   <!-- ================================================================== -->
+   <!-- Generate the TimerService_ejb JAR file -->
+   <!-- ================================================================== -->
+
+   <fileset id="timerservice.ejb.files" dir="${buildmain}">
+        <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.timerservice}/facade/**"/>
+            <include name="${dir.timerservice}/store/db/**"/>
+         </patternset>
+    </fileset>
+
+    <target name="TimerService_ejb" depends="compile">
+         <delete dir="${buildmain}/${meta}" />
+         <mkdir dir="${buildmain}/${meta}" />
+         <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.timerservice}/config" includes="**/*.xml"/>
+         </copy>
+
+         <jar jarfile="${dist}/lib/TimerService_ejb.jar" manifest="${manifest}">
+            <fileset refid="timerservice.ejb.files"/>
+         </jar>
+     </target>
+
+   <!-- ================================================================== -->
+   <!-- Generate the ResourceLock_ejb JAR file -->
+   <!-- ================================================================== -->
+   <fileset id="resourcelock.ejb.files" dir="${buildmain}">
+        <patternset>
+            <include name="${meta}/**"/>
+            <include name="${dir.resourcelock}/facade/**"/>
+            <include name="${dir.resourcelock}/store/db/**"/>
+         </patternset>
+    </fileset>
+
+    <target name="ResourceLock_ejb" depends="compile">
+         <delete dir="${buildmain}/${meta}" />
+         <mkdir dir="${buildmain}/${meta}" />
+         <copy todir="${buildmain}/${meta}" >
+            <fileset dir="${srcmain}/${dir.resourcelock}/config" includes="**/*.xml"/>
+         </copy>
+
+         <jar jarfile="${dist}/lib/ResourceLock_ejb.jar" manifest="${manifest}">
+            <fileset refid="resourcelock.ejb.files"/>
+         </jar>
+   </target>
+   
+  <!-- ================================================================== -->
+  <!-- Generate a JAR file with all the Audit Vertical components  -->
+  <!-- ================================================================== -->
+  <fileset id="audit.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.audit}/sample/**"/>
+       <include name="${dir.document}/audit/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Audits" depends="compile">
+     <jar jarfile="lib/audit.jar" manifest="${manifest}">
+        <fileset refid="audit.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate a JAR file with all the Gateways -->
+  <!-- ================================================================== -->
+  <fileset id="gateways.files" dir="${buildmain}">
+     <patternset>
+       <include name="${dir.gateways}/**"/>
+       <exclude name="${dir.gateways}/pipeline/lib/util/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="Gateways" depends="compile, X400_jar">
+     <jar jarfile="lib/gateways.jar" manifest="${manifest}">
+        <fileset refid="gateways.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the SystemMonitor JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="smon.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.sysmonitor}/*.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="systemMonitor" depends="compile">
+     <copy todir="${dist.apps.sysmonitor}" >
+        <fileset dir="${srcmain}/${dir.sysmonitor}/config" includes="**"/>
+     </copy>
+     <jar jarfile="${dist.apps.sysmonitor}/sysmonitor.jar" manifest="${manifest}">
+        <fileset refid="smon.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the FTP JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="ftp.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.ftp}/**"/>
+        <include name="${dir.ftpx}/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="ftp" depends="compile">
+     <copy todir="${dist.apps.ftp}" >
+        <fileset dir="${srcmain}/${dir.ftp}/config"  includes="**"/>
+        <fileset dir="${srcmain}/${dir.ftpx}/config" includes="**"/>
+        <fileset dir="lib"                           includes="xerces-1_4_3.jar,"/>
+     </copy>
+     <jar jarfile="${dist.apps.ftp}/ftp.jar" manifest="${manifest}">
+        <fileset refid="ftp.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the X400 JAR file -->
+  <!-- ================================================================== -->
+  <fileset id="x400.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.x400}/server/**"/>
+        <include name="${dir.x400}/lib/**.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="X400_jar" depends="compile">
+     <rmic classname="com.inovis.mss.gateways.x400.server.RMMTA" base="${buildmain}"/>
+     <copy todir="${dist.apps.x400}" >
+        <fileset dir="${srcmain}/${dir.x400}/lib" includes="*.so,RMtoMH"/>
+        <fileset dir="${srcmain}/${dir.x400}/config" includes="*.sh,*.properties"/>
+     </copy>
+     <jar jarfile="${dist.apps.x400}/x400.jar" manifest="${manifest}">
+        <fileset refid="x400.files"/>
+     </jar>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate the BillRun App JAR file   -->
+  <!-- ================================================================== -->
+  <fileset id="billrun.app.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.billing}/billrun/**"/>
+        <include name="${dir.billing}/billrun/store/**"/>
+        <include name="${dir.billing}/reports/store/db/DbBillrunReportsDAO.class"/>
+        <exclude name="${dir.billing}/billrun/facade/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="billrun_jar" depends="compile">
+     <copy todir="${dist.apps.billing}" >
+        <fileset dir="${srcmain}/${dir.billing}/billrun/config" includes="**"/>
+     </copy>
+     <jar jarfile="${dist.apps.billing}/billrun.jar" manifest="${manifest}">
+        <fileset refid="billrun.app.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Rules/Router Setup App JAR file   -->
+  <!-- ================================================================== -->
+  <fileset id="rules.app.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.router}/setup/**"/>
+        <exclude name="${dir.router}/setup/config/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="rules_setup_jar" depends="compile">
+     <copy todir="${dist.apps.rules}" >
+        <fileset dir="${srcmain}/${dir.router}/setup/config" includes="**"/>
+     </copy>
+      <copy file="${dist.lib}/META-INF/lib/${common.jar}"
+         tofile="${dist.apps.rules}/${common.jar}"
+         preservelastmodified="yes"/>
+     <jar jarfile="${dist.apps.rules}/RulesSetup.jar" manifest="${manifest}">
+        <fileset refid="rules.app.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Archive App JAR file   -->
+  <!-- ================================================================== -->
+  <fileset id="archive.app.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.audit}/archrun/**"/>
+        <exclude name="${dir.audit}/archrun/config/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="archive_app_jar" depends="compile">
+     <copy todir="${dist.apps.archive}" >
+        <fileset dir="${srcmain}/${dir.audit}/archrun/config" includes="**"/>
+     </copy>
+     <jar jarfile="${dist.apps.archive}/ArchiveApp.jar" manifest="${manifest}">
+        <fileset refid="archive.app.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the FileTool App JAR file   -->
+  <!-- ================================================================== -->
+  <fileset id="filetool.app.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.gateways}/file/**"/>
+        <exclude name="${dir.gateways}/file/config/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="filetool_jar" depends="compile">
+     <copy todir="${dist.apps.filetool}" >
+        <fileset dir="${srcmain}/${dir.gateways}/file/config" includes="**"/>
+     </copy>
+     <jar jarfile="${dist.apps.filetool}/FileTool.jar" manifest="${manifest}">
+        <fileset refid="filetool.app.files"/>
+     </jar>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the ShadowIvas App JAR file   -->
+  <!-- ================================================================== -->
+  <fileset id="shadowivas.app.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.shadowivas}/**.class"/>
+        <include name="${dir.shadowivas}/util/**.class"/>
+        <include name="${dir.shadowivas}/ivas/**.class"/>
+        <include name="${dir.shadowivas}/fulcrum/**.class"/>
+        <include name="${dir.b2b.lib}/exception/**"/>
+        <include name="${dir.b2b.lib}/util/HCNetIPC.class"/>
+        <include name="${dir.b2b.lib}/PerformanceFormatter.class"/>
+     </patternset>
+  </fileset>
+
+  <target name="shadowivas_jar" depends="compile">
+     <delete dir="${dist.apps.shadowivas}" quiet="true"/>
+     <copy todir="${dist.apps.shadowivas}" >
+        <fileset dir="${srcmain}/${dir.shadowivas}/install" includes="**"/>
+     </copy>
+     <unjar src="lib/omni_parser.jar" dest="${dist.apps.shadowivas}">
+        <patternset>
+           <include name="com/inovis/network/NetDataType.class"/>
+           <include name="com/inovis/parse/ParserResources.*"/>
+           <include name="com/inovis/util/ResourceHandler.class"/>
+        </patternset>
+     </unjar>
+     <jar jarfile="${dist.apps.shadowivas}/shadowivas.jar">
+        <fileset refid="shadowivas.app.files"/>
+        <fileset dir="${dist.apps.shadowivas}">
+           <patternset>
+              <include name="com/**"/>
+           </patternset>
+        </fileset>
+     </jar>
+     <delete dir="${dist.apps.shadowivas}/com" quiet="true"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate the Data Migration JAR and Deploy Migration Shell Script -->
+  <!-- ================================================================== -->
+
+  <fileset id="migrate.files" dir="${buildmain}">
+     <patternset>
+        <include name="${dir.migrate}/**"/>
+     </patternset>
+  </fileset>
+
+  <target name="migrate" depends="compile">
+        <jar jarfile="${dist.apps.migrate}/migrate.jar" manifest="${manifest}">
+        <fileset refid="migrate.files"/>
+        </jar>
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="migrateData.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="lib/external" includes="libivascrypto.so" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="lib/external" includes="libbsafe2.so" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/db" >
+        <fileset dir="${dir.install.db.ora}/migrate" includes="*.ora" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/tandem/extract" >
+        <fileset dir="${dir.install.db.ora}/migrate/tandem/extract" includes="*.*" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/tandem/load" >
+        <fileset dir="${dir.install.db.ora}/migrate/tandem/load" includes="*.*" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/tandem" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="migrateTandemData.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/tandem" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="AddAlias.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/tandem" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="addAlledialias_rec.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/tandem" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="addftppush.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/trackaccess" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="migratetrackaccess.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/trackaccess" >
+        <fileset dir="${dir.install.db.ora}/migrate/trackaccess" includes="*.sql" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/dupedi" >
+        <fileset dir="${dir.install.db.ora}/migrate/dupedi" includes="*.sql" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}/vappcc" >
+        <fileset dir="${dir.install.db.ora}/migrate/vappcc" includes="*.sql" />
+     </copy>
+
+     <!-- Not really related to migration...copies the jde scripts to migrate -->
+     <!-- directory so that the Installshield will deploy them -->
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="${dir.install.db.ora}/erpscripts" includes="**" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="migrateVantive.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="migrateCustomerManual.sh" />
+     </copy>
+
+     <copy todir="${dist.apps.migrate}" >
+        <fileset dir="${srcmain}/${dir.migrate}" includes="MigrateDTSCustomer.sh" />
+     </copy>
+
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create JNDI properties file -->
+  <!-- ================================================================== -->
+  <target name="createJndiProperties"
+      description="creates the jndi.properties file">
+      <!-- If we need to support different App Servers, we will need to do -->
+      <!-- something more sophisticated than this -->
+      <copy file="${build.propertyFileDir}/${dir.resource.b2b}/lib/InitialContextWL.properties"
+         tofile="${build.propertyFileDir}/jndi.properties"
+         preservelastmodified="yes"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Move custom classes -->
+  <!-- ================================================================== -->
+  <target name="copyCustomClasses" depends="compile">
+     <mkdir dir="${build}/${customclasses}/${dir.b2b.lib}"/>
+     <copy todir="${dist}/${customclasses}/${dir.b2b.lib}">
+        <fileset dir="${buildmain}/${dir.b2b.lib}">
+     <include name="*.class"/>
+   </fileset>
+     </copy>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate all the EJB Jar files and WAR files -->
+  <!-- ================================================================== -->
+   <target name="alljars"
+      depends="RainmakerServerLibJar,LocalRainmakerServerLibJar,Alert_ejb,BillingReports_ejb,
+    Business_ejb,Channel_ejb,Entity_ejb,BusinessObject_ejb,MessageStore_ejb,
+    Audits,Auditor_ejb,Document_ejb,DuplicateTrader_ejb,Event_ejb,FTPPushExpress_ejb,FileConfiguration_ejb,
+    Sys_Config_ejb,Mailbox_ejb,Network_ejb,GatewayFramework_ejb,RulesEngine_ejb,
+    InboundRule_ejb,Router_ejb,httpservice_war,pipeline_war,UserSession_ejb,
+    Registration_ejb,registration_war,RegHelper_ejb,Security_ejb,User_ejb,
+    Authorization_ejb, Gateways,ftp, systemMonitor, Broker_ejb,Country_ejb, Billing_ejb,
+    Billing_Customer_ejb,X400_ejb,X400_jar, EdiInt_ejb, WebFormsGW_ejb, BusinessUser_ejb,
+    UiHelper_ejb, migrate,billrun_jar,rules_setup_jar,archive_app_jar,
+    filetool_jar,vcm_war,VCM_ejb,SystemHealth_ejb,shadowivas_jar,Mailbag_ejb,
+    AdminEvent_ejb,DocumentReports_ejb,EventFramework_ejb,Notification_ejb, DocMonitor_ejb,
+    DTSQueue_ejb, TimerService_ejb,DocumentScheduler_ejb,ResourceThrottle_ejb,Archive_ejb,ArchiveRepository_ejb,
+    Purge_ejb, Systask_ejb, ResourceLock_ejb,allONXjars, allWEBWAREjars, Service_ejb">
+   </target>
+
+   <target name="allONXjars"
+      depends="RainmakerServerLibJar,
+               LocalONXServerLibJar,
+               OnNetworkTransform_ejb,
+               OnNetworkMapTrack_ejb,
+               OnNetworkRepository_ejb">
+   </target>
+   
+   <target name="allWEBWAREjars"
+      depends="RainmakerServerLibJar,
+               LocalWebwareServerLibJar,
+               Sys_Config_ejb,
+               EventFramework_ejb,
+               WebwareServerLibJar,
+               OnNetworkImportExport_ejb">
+   </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the RainMaker EAR file                                      -->
+  <!-- Pre compile ejb runs on property COMPILEEJB. Default no.           -->
+  <!-- ================================================================== -->
+  <target name="rainmakerEar" depends="createJndiProperties,alljars">
+     <copy todir="${dist.lib}/META-INF/lib">
+        <fileset dir="lib" includes="*.jar" excludes="classes12.jar"/>
+     </copy>
+     <copy todir="${dist.lib}/META-INF" >
+        <fileset dir="${conf}" includes="weblogic-application.xml"/>
+     </copy>
+     <copy todir="${dist.lib}/${appinflib}">
+        <fileset dir="lib/ipnet" includes="a9patch.jar,ipn_bmgr_extapi.jar,3paxis.jar"/>
+        <fileset dir="lib/onx"   includes="ONXlate.jar,soapapi.jar,FESI.jar"/>
+     </copy>
+     <copy todir="${dist.lib}" >
+        <fileset dir="${deploy.GW}/apps" includes="*.war"/>
+        <fileset dir="${dist.onx}/" includes="OnNetworkMapTrack_ejb.jar,OnNetworkRepository_ejb.jar,OnNetworkTransform_ejb.jar"/>
+     </copy>
+
+     <ear destfile="${dist}/${rmear}" appxml="${conf}/CORE/application.xml">
+        <fileset dir="${dist.lib}" includes="**"/>
+     </ear>
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Create the Production RainMaker EAR file -->
+  <!-- ================================================================== -->
+  <target name="rainmakerEarProduction" depends="createJndiProperties,alljars">
+     <copy todir="${dist.lib}/META-INF/lib" >
+        <fileset dir="lib" includes="*.jar"/>
+     </copy>
+     <copy todir="${dist.lib}/META-INF" >
+        <fileset dir="${conf}" includes="weblogic-application.xml"/>
+     </copy>
+     <copy todir="${dist.lib}/${appinflib}">
+        <fileset dir="lib/ipnet" includes="a9patch.jar,ipn_bmgr_extapi.jar,3paxis.jar"/>
+        <fileset dir="lib/onx"   includes="ONXlate.jar,soapapi.jar,FESI.jar"/>
+     </copy>
+     <copy todir="${dist.lib}" >
+        <fileset dir="${dist.onx}/" includes="OnNetworkMapTrack_ejb.jar,OnNetworkRepository_ejb.jar,OnNetworkTransform_ejb.jar"/>
+     </copy>     
+     <ear destfile="${dist}/${rmear}" appxml="${conf}/CORE/application.xml">
+        <fileset dir="${dist}/lib" includes="**"/>
+     </ear>
+     <antcall target="compile.ejb.rmear" />
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the ONX EAR file -->
+  <!-- ================================================================== -->
+  <target name="onxEar" depends="createJndiProperties,allONXjars">
+     <copy todir="${dist.onx}/META-INF/lib" >
+        <fileset dir="lib" includes="*.jar"/>
+     </copy>
+     <copy todir="${dist.onx}/META-INF/lib" >
+        <fileset dir="${dist}/lib/META-INF/lib" includes="RainmakerServerLib.jar"/>
+     </copy>
+     <copy todir="${dist.onx}/META-INF" >
+        <fileset dir="${conf}" includes="weblogic-application.xml"/>
+     </copy>
+     <copy todir="${dist.onx}/${appinflib}">
+        <fileset dir="lib/onx"   includes="ONXlate.jar,soapapi.jar,FESI.jar"/>
+     </copy>
+     <ear destfile="${dist}/${onxear}" appxml="${conf}/ONX/application.xml">
+        <fileset dir="${dist.onx}/" includes="**"/>
+     </ear>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the ONX EAR file -->
+  <!-- ================================================================== -->
+  <target name="onxEarProduction" depends="onxEar">
+     <antcall target="compile.ejb.onxear" />
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Create the Webware EAR file                                      -->
+  <!-- ================================================================== -->
+  <target name="webwareEar" depends="createJndiProperties,allWEBWAREjars">
+     <copy todir="${dist.webware}/META-INF/lib">
+        <fileset dir="lib" includes="*.jar"/>
+     </copy>
+     <copy todir="${dist.webware}/META-INF/lib" >
+        <fileset dir="${dist}/lib/META-INF/lib" includes="RainmakerServerLib.jar, jdom.jar"/>
+     </copy>
+     <copy todir="${dist.webware}/META-INF" >
+        <fileset dir="${conf}" includes="weblogic-application.xml"/>
+     </copy>
+     <copy todir="${dist.webware}/${appinflib}">
+        <fileset dir="lib/onx"   includes="ONXlate.jar,soapapi.jar,FESI.jar"/>
+     </copy>
+     <copy todir="${dist.webware}" >
+        <fileset dir="${dist.lib}" includes="EventFramework_ejb.jar, Sys_Config_ejb.jar"/>
+     </copy>
+     <ear destfile="${dist}/${webwareear}" appxml="${conf}/WEBWARE/application.xml">
+        <fileset dir="${dist.webware}" includes="**"/>
+     </ear>
+     <ear destfile="${dist}/WebwareWeblogic_dev.ear" appxml="${conf}/WEBWARE/application_dev.xml">
+        <fileset dir="${dist.webware}" 
+              includes="**"
+              excludes="EventFramework_ejb.jar, 
+                        Sys_Config_ejb.jar"/>
+     </ear>
+     
+  </target>
+  
+  <target name="compile.ejb.webwareear" >
+      <antcall target="_compile.ejb" >
+         <param name="compile.ejb.earfile" value="${dist}/${webwareear}" />
+         <param name="compile.ejb.classpath" value="compile.ejb.classpath.webwareear" />
+      </antcall>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the Webware EAR file -->
+  <!-- ================================================================== -->
+  <target name="webwareEarProduction" depends="webwareEar">
+      <antcall target="compile.ejb.webwareear" />
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Create the Pipeline EAR file -->
+  <!-- ================================================================== -->
+  <target name="pipelineEar" depends="pipeline_war">
+     <copy todir="${dist.lib}/META-INF/lib" >
+        <fileset dir="lib" includes="Pipeline.war"/>
+     </copy>
+     <ear destfile="${deploy.GW}/apps/Pipeline.ear" manifest="${conf}/gw_manifest.mf"
+        appxml="${conf}/pipelinegateway_application.xml">
+        <fileset dir="${dist}/lib" includes="Pipeline.war,META-INF/lib/omni_parser.jar,META-INF/lib/xerces-1_4_3.jar,META-INF/lib/gateways.jar,META-INF/lib/RainmakerServerLib.jar"/>
+     </ear>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the EAR files for development -->
+  <!-- ================================================================== -->
+  <target name="dist" depends="compile, rainmakerEar, onxEar, webwareEar, pipelineEar">
+  </target>
+
+  <target name="dist_prod" depends="compile, rainmakerEarProduction, onxEarProduction, webwareEarProduction, pipelineEar">
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the InstallShield file -->
+  <!-- if need to compile file, use "ant createInstall -Darg=compile      -->
+  <!-- ================================================================== -->
+  <target name="createInstall" depends="compile, rainmakerEarProduction,onxEar, webwareEar, pipelineEar">
+     <antcall target="_installSetupCORE" />
+     <antcall target="_installSetupGW" />
+     <antcall target="_installSetupONX" />
+  </target>
+  
+  <target name="_installSetupCORE">
+     <zip destfile="${deploy}/CORE_setup.zip">
+     	<zipfileset src="${dist}/${rmear}" prefix="dialog/coreserver" filemode="754" dirmode="754" />
+     	<zipfileset dir="${dist}/customclasses/" includes="**" prefix="dialog/FulcrumClasses/StartupClasses"/>
+     	<zipfileset dir="install/" includes="*.sh" filemode="754"/>
+     	<zipfileset dir="${dist}/lib/META-INF/lib" includes="RainmakerServerLib.jar,omni_parser.jar,xerces-1_4_3.jar" prefix="dialog/lib"/>
+     	<zipfileset dir="lib/ipnet" includes="3paxis.jar,a9patch.jar,ipn_bmgr_extapi.jar,jdom.jar,ipnetlib.jar,msgsrv_all.jar" prefix="dialog/lib/ipnet"/>
+     	<zipfileset dir="lib/weblogic" includes="weblogic.jar" prefix="dialog/lib"/>
+     	<zipfileset dir="lib/external" includes="wlclient.jar" prefix="dialog/lib"/>
+     	<zipfileset dir="${dist}/apps" includes="billing/**,
+     	                                         sysmonitor/**,
+     	                                         filetool/**,
+     	                                         x400/**,
+     	                                         archive/**" prefix="dialog"/>
+     	
+      <zipfileset dir="install/db/ora/BLD_${release.maint}/" includes="**" prefix="dbscripts"/>
+      <zipfileset dir="src/main/com/inovis/util/xnative/solaris/" includes="libsymlink.so" prefix="opt/CORE/native/lib" />
+      <zipfileset dir="install/template/COMMON/" includes="*.*" prefix="opt/STORE/common/dialog"/>
+     	<zipfileset dir="${build}" includes="propertyFiles/**" excludes="propertyFiles/jndi.properties" prefix="dialog"/>
+     </zip>  
+  </target>
+  
+
+  <target name="_installSetupGW">
+     <copy todir="${deploy.GW}/apps" >
+        <fileset dir="${dist}/customclasses" includes="**"/>
+     </copy>
+     
+     <zip destfile="${deploy}/GW_setup.zip">
+        <zipfileset dir="install/template/GW" includes="gw_install_apps.sh" filemode="754"/>
+        <zipfileset dir="${build}" includes="propertyFiles/**" excludes="propertyFiles/jndi.properties,propertyFiles/remote.jndi.properties"/>
+        <zipfileset dir="${deploy.GW}" includes="**"/>
+        <zipfileset dir="${dist}/apps" includes="ftp/**" excludes="ftp/jndi.properties"/>
+        <zipfileset dir="${dist}/lib/META-INF" includes="lib/omni_parser.jar,lib/RainmakerServerLib.jar,lib/audit.jar"/>
+     </zip>       
+  </target>
+
+  
+  <target name="_installSetupONX">
+     <zip destfile="${deploy}/ONX_setup.zip">
+        <!--ONX Install Script -->
+        <zipfileset dir="install/template/ONX" includes="**" filemode="754" />
+        
+        <zipfileset dir="${dist}/customclasses/" includes="**" prefix="FulcrumClasses/StartupClasses"/>
+        
+        <!-- ONX Property Files -->
+        <zipfileset dir="${build}" includes="propertyFilesONX/**" excludes="propertyFilesONX/jndi.properties"/>
+        
+        <!--ONX Ear File expanded -->
+        <zipfileset src="${dist}/${onxear}" includes="**" prefix="onxserverEar"/>
+        
+
+     </zip>          
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Create the distribution EAR file -->
+  <!-- ================================================================== -->
+  <target name="redist" depends="clean, dist">
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Compile unit tests (JUnit and Cactus) -->
+  <!-- ================================================================== -->
+  <target name="compiletests">
+      <ant antfile="buildtest.xml" target="compiletests" inheritrefs="true"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Create the test EAR file that contains the Cactus tests -->
+  <!-- Updates the ear file with the CactusTests.war file -->
+  <!-- ================================================================== -->
+  <target name="testdist" depends="dist" description="Create the Rainmaker test ear file">
+      <ant antfile="buildtest.xml" target="testdist" inheritrefs="true"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Run the unit tests with JUnit -->
+  <!-- ================================================================== -->
+  <target name="runtests" depends="compile">
+      <ant antfile="buildtest.xml" target="runtests" inheritrefs="true"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Run the Cactus unit tests with JUnit-->
+  <!-- ================================================================== -->
+  <target name="runcactustests">
+	  <ant antfile="buildtest.xml" target="runcactustests" inheritrefs="true"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Initialize Clover to collect unit test coverage statistics -->
+  <!-- ================================================================== -->
+  <target name="with.clover">
+	  <clover-setup initString="clover.db"
+  			source="1.5"
+  			flushpolicy="threaded"
+	        flushinterval="5000"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Generate Clover unit test coverage report -->
+  <!-- ================================================================== -->
+  <target name="clover.html" depends="with.clover">
+      <clover-report>
+		  <current outfile="clover_html">
+	          <format type="html"/>
+	      </current>
+      </clover-report>
+  </target>
+ 
+  <!-- ================================================================== -->
+  <!-- Copy the property files from src directories to class directories -->
+  <!-- ================================================================== -->
+  <target name="copypropertyfiles" depends="init">
+     <copy todir="${buildmain}"
+        preservelastmodified="yes">
+        <fileset dir="${srcmain}" >
+           <patternset>
+              <include name="**/*.properties"/>
+           </patternset>
+        </fileset>
+     </copy>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Copy all property files to propertyFiles folder -->
+  <!-- ================================================================== -->
+  <target name="copyProperties"
+      description="copies .properties files to the build/propertyFiles directory">
+      <!--
+      The property files are copied into this build directory so that the logging
+      package will be able to find the resource files.  Inorder for this to happen,
+      you need to set your Weblogic classpath to point to this directory.
+      -->
+
+      <!-- blindly copy over all property files -->
+      <copy todir="${build.propertyFileDir}"
+         preservelastmodified="yes">
+         <fileset dir="${buildmain}" defaultexcludes="no">
+            <patternset>
+               <include name="**/*.properties"/>
+            </patternset>
+         </fileset>
+      </copy>
+   </target>
+   
+  <!-- ================================================================== -->
+  <!-- Copy all property files to propertyFiles folder -->
+  <!-- ================================================================== -->
+  <target name="copyPropertiesONX"
+      description="copies .properties files to the build/propertyFilesONX directory">
+
+      <!-- blindly copy over all property files -->
+      <copy todir="${build.propertyFileDirONX}"
+         preservelastmodified="yes">
+         <fileset dir="${buildmain}" defaultexcludes="no">
+            <patternset>
+               <include name="**/onnettransform/**/*.properties"/>
+               <include name="**/*.properties"/>
+            </patternset>
+         </fileset>
+      </copy>
+   </target>   
+
+  <!-- ================================================================== -->
+  <!-- Generate the javadocs -->
+  <!-- ================================================================== -->
+  <target name="javadoc" depends="init">
+     <javadoc
+           classpathref="project.class.path"
+           destdir="${javadocs}"
+           author="true" version="true" use="true"
+           windowtitle="${ant.project.name} API"
+           doctitle="&lt;h1&gt;${ant.project.name} API&lt;/h1&gt;"
+           bottom="&lt;i&gt;Copyright &#169; 2002 Inovis Inc. All Rights Reserved.&lt;/i&gt;">
+        <packageset dir="${srcmain}">
+           <include name="com/**"/>
+           <exclude name="**/store/**"/>
+           <exclude name="**/facade/**"/>
+           <exclude name="**/defs/**"/>
+           <exclude name="**/config/**"/>
+           <exclude name="**/runtime/**"/>
+           <exclude name="**/resource/**"/>
+        </packageset>
+     </javadoc>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Delete the ${build}, ${dist}, and ${deploy} directory trees -->
+  <!-- ================================================================== -->
+  <target name="clean" description="Remove build files">
+     <delete dir="${build}"/>
+     <delete dir="${dist}"/>
+     <delete dir="${deploy}" quiet="true"/>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Delete the ${build} and ${dist} directories as well as the javadocs -->
+  <!-- and any other generated files -->
+  <!-- ================================================================== -->
+  <target name="clobber" depends="clean">
+     <delete dir="${javadocs}" quiet="true"/>
+     <delete quiet="true">
+        <fileset dir="." includes="B2BI*.log,TEST-test.*"/>
+     </delete>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Generate a tarball of everything as well as generating the install -->
+  <!-- distribution file. -->
+  <!-- ================================================================== -->
+  <target name="tarfile" depends="clobber, createInstall, javadoc" >
+    <delete file="${build.tar.file}.tar" quiet="true"/>
+    <tar tarfile="${build.tar.file}.tar" basedir="${build.tar.dir}"></tar>
+  </target>
+
+  <target name="qabuild" depends="tarfile" >
+    <ftp action="${ftp.action}"
+         server="${ftp.server}"
+         remotedir="${ftp.remotedir}"
+         userid="${ftp.userid}"
+         password="${ftp.password}">
+      <fileset dir="${basedir}" >
+        <include name="${build.tar.file}.tar" />
+      </fileset>
+    </ftp>
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Run Ant on all targets in this file -->
+  <!-- ================================================================== -->
+  <target name="all" depends="qabuild, runtests">
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Copy EAR file to RMApplicaiton folder and deploy it -->
+  <!-- ================================================================== -->
+  
+  <target name="copy.core" depends="dist">
+    <delete dir="${install.target}/${rmear}" />
+    <delete dir="${install.target}/WebwareWeblogic_dev.ear" />
+    <delete file="${install.target}/${rmear}" />
+    <delete file="${install.target}/WebwareWeblogic_dev.ear" />
+    
+    <copy file="${dist}/${rmear}"
+         tofile="${install.target}/${rmear}" 
+         overwrite="yes"/>
+         
+    <copy file="${dist}/WebwareWeblogic_dev.ear"
+         tofile="${install.target}/WebwareWeblogic_dev.ear" 
+         overwrite="yes"/>
+         
+
+    <copy todir="${install.target}/.." >
+            <fileset  dir="lib\onx" 
+                      includes="standards\**" />
+    </copy>
+        
+    <copy todir="${install.target}/propertyFiles" >
+            <fileset  dir="build/propertyFiles" 
+                      includes="**" 
+                      excludes="jndi.properties,
+                                remote.jndi.properties"/>
+    </copy>
+
+    <copy todir="${install.target}/FulcrumClasses" >
+            <fileset  dir="dist/customclasses" 
+                      includes="**"/>
+    </copy>
+
+  </target>
+
+  <target name="copy.apps" >
+    <copy todir="${install.target}/../apps/lib" >
+            <fileset  dir="${dist.apps.filetool}/" 
+                      includes="FileTool.jar"/>
+            <fileset  dir="${dist.apps.ftp}/" 
+                      includes="ftp.jar"/>                      
+            <fileset  dir="lib" 
+                      includes="omni_parser.jar"/>                      
+            <fileset  dir="${dist}/lib/META-INF/lib" 
+                      includes="RainmakerServerLib.jar"/>
+            <fileset  dir="${dist.apps.sysmonitor}" 
+                      includes="sysmonitor.jar"/>                      
+    </copy>
+  </target>
+  
+  <target name="deploy.new" >
+    <property name="weblogic.url" value="t3://localhost:7001" />
+    <property name="weblogic.user" value="system" />
+    <property name="weblogic.password" value="password" />
+    <property name="install.dir" value="C:/TEST_WL_92/rainmaker" />
+    <property name="install.target" value="${install.dir}/RMapplications" />
+    <property name="weblogic.server" value="AdminServer" />
+    <echo message="COMMAND LINE: -Dweblogic.server=${weblogic.server} -Dweblogic.url=${weblogic.url} -Dweblogic.user=${weblogic.user} -Dweblogic.password=${weblogic.password} -Dinstall.dir=${install.dir}" />
+    
+    <ant target="copy.core" />
+    
+    <java classname="weblogic.Deployer" fork="yes" failonerror="yes">
+            <classpath path="${weblogic.lib.dir}\weblogic.jar" />
+            <arg line=" -verbose -noexit -name RainMakerWebLogic -source ${install.target}/${rmear} -targets ${weblogic.server} -adminurl ${weblogic.url} -user ${weblogic.user} -password ${weblogic.password} -deploy" />
+     </java>
+
+    <java classname="weblogic.Deployer" fork="yes" failonerror="yes">
+            <classpath path="${weblogic.lib.dir}\weblogic.jar" />
+            <arg line=" -verbose -noexit -name WebwareWeblogicDev -source ${install.target}/WebwareWeblogic_dev.ear -targets ${weblogic.server} -adminurl ${weblogic.url} -user ${weblogic.user} -password ${weblogic.password} -deploy" />
+     </java>
+
+  </target>
+  
+  <!-- ================================================================== -->
+  <!-- Copy EAR file to RMApplicaiton folder and re-deploy it -->
+  <!-- ================================================================== -->
+
+  <target name="redeploy.new" >
+    <property name="weblogic.url" value="t3://localhost:7001" />
+    <property name="weblogic.user" value="system" />
+    <property name="weblogic.password" value="password" />
+    <property name="install.dir" value="C:/TEST_WL_92/rainmaker" />
+    <property name="install.target" value="${install.dir}/RMapplications" />
+    <property name="weblogic.server" value="AdminServer" />
+    <echo message="COMMAND LINE: -Dweblogic.server=${weblogic.server} -Dweblogic.url=${weblogic.url} -Dweblogic.user=${weblogic.user} -Dweblogic.password=${weblogic.password} -Dinstall.dir=${install.dir}" />
+<!--
+    <wldeploy action="stop" 
+              name="RainMakerWebLogic" 
+              user="${weblogic.user}" 
+              password="${weblogic.password}" 
+              verbose="true" 
+              adminurl="${weblogic.url}" 
+              debug="true" 
+              targets="${weblogic.server}" 
+              failonerror="${weblogic.deploy.failonerror}"/>         
+  -->  
+
+         
+    <antcall target="copy.core" />
+    
+    <wldeploy action="redeploy" name="RainMakerWebLogic" user="${weblogic.user}" password="${weblogic.password}" verbose="true" adminurl="${weblogic.url}" debug="true" targets="${weblogic.server}" failonerror="${weblogic.deploy.failonerror}"/>
+
+    <wldeploy action="redeploy" name="WebwareWeblogicDev" user="${weblogic.user}" password="${weblogic.password}" verbose="true" adminurl="${weblogic.url}" debug="true" targets="${weblogic.server}" failonerror="${weblogic.deploy.failonerror}"/>
+    
+   <!--
+    <wldeploy action="redeploy" name="ONXWebLogic" user="${weblogic.user}" password="${weblogic.password}" verbose="true" adminurl="${weblogic.url}" debug="true" targets="${weblogic.server}" failonerror="${weblogic.deploy.failonerror}"/>
+    -->
+
+    <!--
+    <wldeploy action="start" 
+              name="RainMakerWebLogic" 
+              user="${weblogic.user}" 
+              password="${weblogic.password}" 
+              verbose="true" 
+              adminurl="${weblogic.url}" 
+              debug="true" 
+              targets="${weblogic.server}" 
+              failonerror="${weblogic.deploy.failonerror}"/>
+    -->
+  </target>
+  </project>

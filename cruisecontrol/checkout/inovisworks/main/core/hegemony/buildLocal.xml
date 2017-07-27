@@ -1,0 +1,79 @@
+<project name="KunalBuildCore" basedir="." default="kdist">
+
+    	<property name="buildmain" value="build/main"/>
+	<property name="buildtest" value="build/test" />
+	<property name="junit.report" value="junit-report" />
+	<property name="weblogicjar" value="C:\bea92\weblogic92\server\lib\weblogic.jar"/>
+	<property name="junit.lib" value="lib/junit"/>
+	<path id="runtests.class.path">
+		<pathelement location="${buildmain}" />
+		<pathelement location="${buildtest}" />
+		<pathelement path="${build.propertyFileDir}" />
+		<pathelement path="${java.class.path}" />
+		<pathelement location="${weblogicjar}"/>
+		<fileset dir="lib">
+			<include name="*.*" />
+		</fileset>
+		<fileset dir="${junit.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="prepare">
+		<echo message="Making directories..." />
+	  	<mkdir dir="build/Rainmaker"/>
+	  	<mkdir dir="build/Rainmaker/APP-INF"/>
+	  	<mkdir dir="build/Rainmaker/APP-INF/classes"/>
+	  	<mkdir dir="build/Rainmaker/META-INF"/>
+	  	<mkdir dir="build/Rainmaker/META-INF/lib"/>
+	  	<mkdir dir="${junit.report}"/>
+	</target>
+	
+	<target name="clean" depends="">
+		<echo message="Calling base clean..." />
+		<ant antfile="build.xml" target="clean"/>
+	</target>
+    
+	  <target name="kdist">
+	  	<!--  <echo message="Compiling Code along with JUNIT tests ... "/>
+		<ant antfile="build.xml" target="testdist"/> -->
+	  	<echo message="Copying classes to APP-INF/classes"/>
+	  	<copy todir="build/Rainmaker/APP-INF/classes">
+	  		<fileset dir="${buildmain}"/>
+	  	</copy>
+	  	<echo message="Copying propertyfiles to APP-INF/classes"/>
+	  	<copy todir="build/Rainmaker/APP-INF/classes">
+	  		<fileset dir="build/propertyFiles"/>
+	  	</copy>
+	  	<echo message="Copying Libraries to Rainmaker"/>
+	  	<copy todir="build/Rainmaker">
+	  		<fileset dir="dist/lib"/>
+	  	</copy>
+	  	<echo message="Copying application.xml"/>
+	  	<copy file="conf/CORE/application.xml" todir="build/Rainmaker/META-INF"/>
+
+	  	<echo message="Copying ftp server files to ftp"/>
+	  	<!-- Sync FTP Server -->
+	  	<copy todir="/ftp" file="build/Rainmaker/META-INF/lib/RainmakerServerLib.jar"/>
+	  	<copy todir="/ftp">
+	  		<fileset dir="dist/apps/ftp"/>
+	  	</copy>
+
+	  </target>
+	  
+	  <target name="kruntests" depends="kdist" description="JUNIT tests">
+	  	<echo message="Running JUNIT Tests ..."/>
+		<junit fork="yes" errorProperty="test.failed" failureProperty="test.failed">
+			<jvmarg value="-Djava.naming.factory.initial=weblogic.jndi.WLInitialContextFactory"/> 
+			<jvmarg value="-Djava.naming.provider.url=t3://localhost:7001"/>
+			<jvmarg value="-Djava.naming.factory.url.pkgs=weblogic.jndi.factories"/>
+			<test name="test.com.inovis.AllTests" todir="${junit.report}"/>
+			<classpath refid="runtests.class.path" />
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+		</junit>	  	
+		<fail message="JUNIT Tests failed: check report." if="test.failed"/>
+	  </target>	   
+</project>
+
+

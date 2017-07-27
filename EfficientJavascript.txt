@@ -1,0 +1,109 @@
+Efficient Javascript
+
+1. Use Objects wherever possible
+	var a = "hello";
+	for(var i=0; i < 10; i++)
+	{
+		alert(a.charAt(i));
+	}
+
+	Here a has to be converted to object and twice: once for length and second for charAt
+	
+	var a = new String("hello");
+	for(var i=0; i < 10; i++)
+	{
+		alert(a.charAt(i));
+	}
+
+2. Use square brackets [] to access object properties
+	var p = { "greet" : "hello" },  s = "greet", t;
+	eval( "t = p." + s);
+	
+	var p = { "greet" : "hello" },  s = "greet", t;
+	t = p[s];
+	
+3. Cache the function pointers 
+	function foo1(collection)
+	{
+		var i, n = collection.length;
+		for(i = 0; i < n; i++)
+			foo2(collection[i]);
+	}
+	
+	foo2 is out of scope of foo1
+	
+	function foo1(collection)
+	{
+		var i, n = collection.length;
+			fnc = foo2;
+		for(i = 0; i < n; i++)
+			fnc(collection[i]);
+	}
+	fnc is inside the scope of foo1 now.
+
+4. Functions and callback
+	var callback = new function () { };
+	foo(data, callback);
+	
+	Using "function" constructor is same as doing eval, since the string inside the constructor needs to be evaluated
+	
+	if you don't need to use callback anywhere else, write the function definition directly.
+	
+	foo(data, function() { });
+
+5. Avoid using with statement
+	with(elem.style) {
+		color =  "#ffff";
+		foo = "something";		
+	} 
+	
+	if foo is not property of elem.style, a global var foo is created.
+
+6. Avoid using global variables.
+	1. by Implementation global vars are indexed by name
+	2. Code inside a function tries to resolve a global var by stepping through every scope until it reaches the global object.
+	3. Memory used by global vars is only released at the end of execution.
+
+7. Avoid using try catch inside for loop. A new scope for catch is created for each iteration. use try catch outside the for loop.
+	Instead of ...
+		for() {
+			try{ }
+			catch() { }
+		}
+	Do this ...
+
+	try{ 
+		for() {
+			
+		}
+	}
+	catch() { }
+
+8. use setTimeout(myfunc, ...) instead of setTimeout('myfunc()', ...). The latter does eval.
+
+9. use Array.join() or String.concat() than '+' operator. 
+
+	var a = ["hello", "world"].join();
+	var b = String.concat("hello", "world");
+
+10. Cache the property of object and then access the properties of the property
+	var a = document.getElementById("foo");
+	var e = a.style;
+	e.display = ;
+	e.color = ;
+	
+11. Hide the object you are modifying the properties of and display it after you are done changing the properties.
+	It will improve the reflow.
+
+12. If you are appending lot of Elements to a DOM node, detach the node, append the children and reattach the node.
+	var foo = document.getElementById("foo1");
+	container = document.body.removeChild(foo);
+	for( .... )
+		foo.appendChild(someelem);
+	document.body.appendChild(container);
+
+See more at http://produce.yahoo.com/gopal_v/examples/javascript/container-event.html
+	
+
+	
+	

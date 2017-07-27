@@ -1,0 +1,91 @@
+------------- httpd.conf ---------------
+#Comment out listen 80 - all traffic is now to BEA
+#Listen 80
+
+#This is when you have configuration files in conf.d folder. Not needed when you have single httpd.conf
+Include conf.d/*.conf
+
+#Enable proxy module along with proxy protocol module(s)
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+
+#
+# Proxy Server directives. Uncomment the following lines to
+# enable the proxy server:
+#
+<IfModule mod_proxy.c>
+ProxyRequests On
+#
+<Proxy *>
+    Order deny,allow
+    Allow from all
+    Allow from .example.com
+</Proxy>
+------------- httpd.conf ---------------
+
+------------- iworks.conf ----------------
+Listen 10.32.131.73:443
+Listen 10.32.131.73:80
+
+<VirtualHost 10.32.131.73:80 >
+    ServerName 10.32.131.73 
+#    ProxyPass /css/loadCordaGraph.do http://kpatilxp.itlogon.com:7001/css/loadCordaGraph.do
+#    ProxyPassReverse /css/loadCordaGraph.do http://kpatilxp.itlogon.com:7001/css/loadCordaGraph.do
+    Redirect / https://10.32.131.73/
+</VirtualHost>
+
+#if you have virtual host as above, otherwise add ProxyPass and ProxyReverse in the http.conf
+<VirtualHost 10.32.131.73:443 >
+    ServerName 10.32.131.73
+    ProxyPass           /css            http://kpatilxp.itlogon.com:7001/css
+    ProxyPassReverse    /css            http://kpatilxp.itlogon.com:7001/css
+    ProxyPass           /ctRedirector   http://kpatilxp.itlogon.com:7001/ctRedirector/
+    ProxyPassReverse    /ctRedirector   http://kpatilxp.itlogon.com:7001/ctRedirector/
+    ProxyPass           /marketing      http://kpatilxp.itlogon.com:7001/marketing
+    ProxyPassReverse    /marketing      http://kpatilxp.itlogon.com:7001/marketing
+    ProxyPass           /css/checkStatus.do     http://kpatilxp.itlogon.com:7001/css/jsp/security/CSSLogin.jsp
+    ProxyPassReverse    /css/checkStatus.do     http://kpatilxp.itlogon.com:7001/css/jsp/security/CSSLogin.jsp
+    ProxyPass           /css_help       http://kpatilxp.itlogon.com:7001/css_help
+    ProxyPassReverse    /css_help       http://kpatilxp.itlogon.com:7001/css_help
+    ProxyPass           /               http://kpatilxp.itlogon.com:7001/marketing/inovisworks/
+    ProxyPassReverse    /               http://kpatilxp.itlogon.com:7001/marketing/inovisworks/
+    SSLEngine on
+    SSLOptions +FakeBasicAuth +ExportCertData +CompatEnvVars +StrictRequire
+    SSLCertificateFile    /etc/httpd/certificates/apache.cert.cert
+    SSLCertificateKeyFile /etc/httpd/certificates/apache.cert.key
+    SSLProxyMachineCertificateFile /etc/httpd/certificates/apache.cert.cert
+    SSLCACertificateFile /etc/httpd/certificates/apache.cert.cert
+    SSLVerifyClient none
+    DefaultType text/html
+    ErrorLog /var/log/httpd/inovisworks/inovisworks_ssl_proxy_error.log
+    TransferLog /var/log/httpd/inovisworks/inovisworks_ssl_proxy.log
+</VirtualHost>
+
+------------- iworks.conf ----------------
+
+------------- ssl.conf ----------------
+
+#Comment Listen 443 in ssl.conf
+------------- ssl.conf ----------------
+
+
+---- SSL config ----
+
+Step one - create the key and request:
+
+  openssl req -new > apache.cert.csr
+
+Step two - remove the passphrase from the key (optional):
+
+  openssl rsa -in privkey.pem -out apache.cert.key
+
+Step three - convert request into signed cert:
+
+   openssl x509 -in apache.cert.csr -out apache.cert.cert -req -signkey apache.cert.key -days 365
+
+The Apache-SSL directives that you need to use the resulting cert are:
+
+  SSLCertificateFile /path/to/certs/apache.cert.cert
+  SSLCertificateKeyFile /path/to/certs/apache.cert.key
+
+---- SSL config ----

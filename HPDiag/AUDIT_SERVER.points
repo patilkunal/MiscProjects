@@ -1,0 +1,12 @@
+[auditServer]
+; Created on Fri Apr 06 10:50:39 EDT 2012
+; Specify the methods that will be instrumented using the class/method/signature fields.
+; The field contains comma separated list of items, regular expressions can be used.
+; To specify text as a regular expression, prefix it using ! - e.g. "!.*"
+; You can limit the scope, so that the instrumentation will only be used when the method
+; is called from a specific place in your code.
+class      = !com\.gxs\.services\.event\.auditServer\..*
+method     = !.*
+signature  = !.*
+layer      = auditServerLayer
+

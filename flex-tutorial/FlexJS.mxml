@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+   width="482" height="348" initialize="initApp()">
+  <mx:Script>
+   <![CDATA[
+     import mx.collections.ArrayCollection;
+     import flash.external.*;
+   
+     public function initDG():void
+     {
+       var people:Array = new Array();
+       people.push({Name: "Charlie", Age: "23", Sex: "Male"});
+       people.push({Name: "Brandon", Age: "23", Sex: "Male"});
+       people.push({Name: "Mike", Age: "23", Sex: "Male"});
+       people.push({Name: "Caroline", Age: "23", Sex: "Female"});
+       var peopleCollection:ArrayCollection = new ArrayCollection(people);
+       dgPeople.dataProvider = peopleCollection;
+       dgPeople.selectedIndex = 0;
+     }
+   
+     public function addPerson(name:String, age:String, sex:String):void
+     {
+       (dgPeople.dataProvider as ArrayCollection).addItem(
+           {Name: name, Age: age, Sex: sex});
+     }
+   
+     public function initApp():void
+     {
+       if (ExternalInterface.available)
+          ExternalInterface.addCallback("addPerson", addPerson);       
+     }
+   
+     public function jsDisplayPerson():void
+     {
+       if (ExternalInterface.available)
+       {
+         lblMessage.text = "Trying to send Data 2";
+         ExternalInterface.call("displayPerson", dgPeople.selectedItem);
+         lblMessage.text = "Data Sent!";
+       }
+       else
+       {
+         lblMessage.text = "Error sending data!"
+       }
+     }
+   ]]>
+ </mx:Script>
+  <mx:Panel id="pnlMain" x="10" y="10" width="462" height="328"
+     layout="absolute" title="Simple Javascript Interaction">
+    <mx:DataGrid id="dgPeople" x="10" y="10" initialize="initDG()"
+       width="422" height="229">
+      <mx:columns>
+        <mx:DataGridColumn headerText="Name" dataField="Name"/>
+        <mx:DataGridColumn headerText="Age" dataField="Age"/>
+        <mx:DataGridColumn headerText="Sex" dataField="Sex"/>
+      </mx:columns>
+    </mx:DataGrid>
+    <mx:Button x="10" y="256" label="JavaScript Display"
+       id="butJSDisplay" click="jsDisplayPerson()"/>
+    <mx:Label x="149" y="260" id="lblMessage"/>
+  </mx:Panel>    
+</mx:Application>

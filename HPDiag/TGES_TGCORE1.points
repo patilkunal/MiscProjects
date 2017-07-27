@@ -1,0 +1,558 @@
+[com-gxs-common-cache]
+class      = !com\.gxs\.common\.cache\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration]
+class      = !com\.gxs\.common\.configuration\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-config]
+class      = !com\.gxs\.common\.configuration\.config\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-event]
+class      = !com\.gxs\.common\.configuration\.event\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-global]
+class      = !com\.gxs\.common\.configuration\.global\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-instance]
+class      = !com\.gxs\.common\.configuration\.instance\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-jmx]
+class      = !com\.gxs\.common\.configuration\.jmx\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-load]
+class      = !com\.gxs\.common\.configuration\.load\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-manage]
+class      = !com\.gxs\.common\.configuration\.manage\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-configuration-util]
+class      = !com\.gxs\.common\.configuration\.util\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-context]
+class      = !com\.gxs\.common\.context\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-logging]
+class      = !com\.gxs\.common\.logging\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-logging-audit]
+class      = !com\.gxs\.common\.logging\.audit\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-logging-dao]
+class      = !com\.gxs\.common\.logging\.dao\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-logging-jdbcappender]
+class      = !com\.gxs\.common\.logging\.jdbcappender\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-logging-util]
+class      = !com\.gxs\.common\.logging\.util\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-monitoring-client-collect]
+class      = !com\.gxs\.common\.monitoring\.client\.collect\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-monitoring-client-data]
+class      = !com\.gxs\.common\.monitoring\.client\.data\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-monitoring-client-publish]
+class      = !com\.gxs\.common\.monitoring\.client\.publish\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-monitoring-client-util]
+class      = !com\.gxs\.common\.monitoring\.client\.util\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-common-monitoring-metric-admin]
+class      = !com\.gxs\.common\.monitoring\.metric\.admin\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/common
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-container]
+class      = !com\.gxs\.services\.container\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-admin]
+class      = !com\.gxs\.services\.event\.admin\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-admin-commands]
+class      = !com\.gxs\.services\.event\.admin\.commands\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-admin-commands-process]
+class      = !com\.gxs\.services\.event\.admin\.commands\.process\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-admin-commands-templates]
+class      = !com\.gxs\.services\.event\.admin\.commands\.templates\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-admin-events]
+class      = !com\.gxs\.services\.event\.admin\.events\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-audit]
+class      = !com\.gxs\.services\.event\.audit\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-config]
+class      = !com\.gxs\.services\.event\.config\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-constants]
+class      = !com\.gxs\.services\.event\.constants\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-data]
+class      = !com\.gxs\.services\.event\.data\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-forwarder-manager]
+class      = !com\.gxs\.services\.event\.forwarder\.manager\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-forwarder-util]
+class      = !com\.gxs\.services\.event\.forwarder\.util\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-forwarder-worker]
+class      = !com\.gxs\.services\.event\.forwarder\.worker\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-jmx]
+class      = !com\.gxs\.services\.event\.jmx\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-logging]
+class      = !com\.gxs\.services\.event\.logging\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-loggingSubscriber]
+class      = !com\.gxs\.services\.event\.loggingSubscriber\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-messaging]
+class      = !com\.gxs\.services\.event\.messaging\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-messaging-lb]
+class      = !com\.gxs\.services\.event\.messaging\.lb\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-publisher]
+class      = !com\.gxs\.services\.event\.publisher\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-publisher-config]
+class      = !com\.gxs\.services\.event\.publisher\.config\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-publisher-messaging]
+class      = !com\.gxs\.services\.event\.publisher\.messaging\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-publisher-validation]
+class      = !com\.gxs\.services\.event\.publisher\.validation\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-resourcelist-cache]
+class      = !com\.gxs\.services\.event\.resourcelist\.cache\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-resourcelist-resource]
+class      = !com\.gxs\.services\.event\.resourcelist\.resource\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-jms]
+class      = !com\.gxs\.services\.event\.router\.jms\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-manager]
+class      = !com\.gxs\.services\.event\.router\.manager\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-registry]
+class      = !com\.gxs\.services\.event\.router\.registry\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-routing]
+class      = !com\.gxs\.services\.event\.router\.routing\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-thread]
+class      = !com\.gxs\.services\.event\.router\.thread\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-threadcontainer]
+class      = !com\.gxs\.services\.event\.router\.threadcontainer\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-util]
+class      = !com\.gxs\.services\.event\.router\.util\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-router-work]
+class      = !com\.gxs\.services\.event\.router\.work\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-subscription]
+class      = !com\.gxs\.services\.event\.subscription\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-subscription-binding]
+class      = !com\.gxs\.services\.event\.subscription\.binding\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-subscription-binding-filtered]
+class      = !com\.gxs\.services\.event\.subscription\.binding\.filtered\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-subscription-channel]
+class      = !com\.gxs\.services\.event\.subscription\.channel\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-subscription-config]
+class      = !com\.gxs\.services\.event\.subscription\.config\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-subscription-filters]
+class      = !com\.gxs\.services\.event\.subscription\.filters\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-event-util]
+class      = !com\.gxs\.services\.event\.util\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-gq]
+class      = !com\.gxs\.services\.gq\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+
+[com-gxs-services-queue]
+class      = !com\.gxs\.services\.queue\..*
+method     = !.*
+signature  = !.*
+ignore_method = run ()V, <clinit> ()V, !(main.*), !(.*[lL]oop.*), !(get.*), !(set.*), !(is.*), !(has.*), !(_cast.*), !(_newInstance.*), !(pop.*), !(push.*), !(current.*), !(checkExpiration.*), !(put.*), !(inputMapOnly.*), !(findTable.*), !(nextNodeIndex.*), !(clone.*), !(shouldExist.*), !(compareTo.*), !(size.*), !(list.*), !(reset.*), !(matches.*), !(..crPending.*), !(allow.*), !(clean.*), !(end.*), !(start.*), !(parseVars.*), !(cancelTimer.*), !(startTimer.*), !(convertTime.*), !(createPath.*), !(decode.*), !(validate.*), !(runTarget.*), !(poolReturn.*), !(check.*), !(onComplete.*), !(belowLowMark.*), !(receiveEve.*), !(doWork.*), !(schedule.*), !(remove.*), !(resume.*), !(debug.*), !(drain.*), !(handleHandshake.*), !(skipClientAuth.*), !(last.*), !(release.*), !(shortToChars.*), !(intToChars.*), !(equals.*), !(wakeup.*), !(toPrettyStr.*), !(ack.*), !(connectAllowed.*), !(count.*), !(interested.*), !(parseVar.*), !(decodeValues.*), !(outputMap.*), !(markDelete.*), !(delete.*), !(findCusrsor.*), !(seek.*), !(dataCheck.*), !(findBy.*), !(find.*), !(copy.*), !(newFlowElementID.*), !(selectBranch.*), !(substitut.*), !(toStr.*), !(willExit.*), !(isDone.*), !(onEvent.*), !(wait.*), !(getTxContext.*)
+layer      = GXS/com/gxs/services
+detail     = disabled
+priority   = -8
+

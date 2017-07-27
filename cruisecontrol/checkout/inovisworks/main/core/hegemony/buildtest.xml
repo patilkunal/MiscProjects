@@ -1,0 +1,201 @@
+<project name="RainmakerTest" default="runtests" basedir=".">
+
+	<!-- ================================================================== -->
+	<!-- Set global properties for this build -->
+	<!-- ================================================================== -->
+
+	<property name="srctest" value="src/test" />
+	<property name="buildtest" value="build/test" />
+	<property name="customTest" value="AllTests" />
+	<property name="junit.lib" value="lib/junit" />
+	<property name="dir.testlib" value="test/com/inovis/b2b/testlib" />
+	<property name="dir.cactus.config" value="${dir.testlib}/cactus/config" />
+	<property name="dir.test.inovis" value="test/com/inovis" />
+	
+	<!-- ================================================================== -->
+	<!-- Set the CLASSPATH variable -->
+	<!-- ================================================================== -->
+
+	<path id="test.class.path">
+		<path refid="project.class.path"/>
+		<pathelement location="${buildtest}" />
+		<fileset dir="${junit.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="runtests.class.path">
+		<pathelement location="${buildmain}" />
+		<pathelement location="${buildtest}" />
+		<pathelement path="${build.propertyFileDir}" />
+		<pathelement path="${java.class.path}" />
+		<fileset dir="lib">
+			<include name="*.*" />
+		</fileset>
+		<fileset dir="${junit.lib}">
+			<include name="*.*" />
+		</fileset>
+	</path>
+
+	<!-- ================================================================== -->
+	<!-- Initialize the build paths and create any needed directories -->
+	<!-- ================================================================== -->
+	<target name="init">
+		<mkdir dir="${buildtest}" />
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Create the test EAR file that contains the Cactus tests -->
+	<!-- Updates the ear file with the CactusTests.war file -->
+	<!-- ================================================================== -->
+	<target name="testdist" depends="compiletests, CactusTestsWar, copyTestProperties" description="Create the Rainmaker test ear file">
+	<!--
+      Work around limitations in Ant.  Touch the CactusTests.war and the
+      application.xml file so that both will be added to the EAR file when
+      the 'testdist' target is run.
+     -->
+		<copy overwrite="true" file="${conf}/test_application.xml" tofile="${conf}/app.xml" />
+		<touch file="${dist}/lib/CactusTests.war" />
+		<touch file="${conf}/app.xml" />
+		<ear destfile="${dist}/${rmear}" update="yes" appxml="${conf}/app.xml">
+			<fileset dir="${dist}/lib" includes="CactusTests.war" />
+		</ear>
+		<delete file="${conf}/app.xml" />
+	</target>
+
+	<target name="compiletests" depends="init">
+		<javac srcdir="${srctest}" destdir="${buildtest}" includes="test/com/inovis/**" debug="${debug}" deprecation="${deprecation}">
+			<classpath refid="test.class.path" />
+		</javac>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Copy external property files needed to run test cases to -->
+	<!-- propertyFiles folder -->
+	<!-- ================================================================== -->
+	<target name="copyTestProperties" description="copies test .properties files to the build/propertyFiles directory ">
+		<copy file="${srctest}/${dir.testlib}/cactus/cactus.properties" tofile="${build.propertyFileDir}/cactus.properties" preservelastmodified="yes" />
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Run the unit tests with JUnit -->
+	<!-- ================================================================== -->
+	<target name="runtests" depends="compiletests">
+		<junit fork="yes" printsummary="yes" haltonfailure="no">
+			<classpath refid="runtests.class.path" />
+			<formatter type="plain" />
+			<test name="test.com.inovis.AllTests">
+			</test>
+		</junit>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Run a specific test with JUnit -->
+	<!-- ================================================================== -->
+	<target name="runCustomTest" depends="init">
+		<junit fork="yes" printsummary="yes" haltonfailure="no">
+			<classpath refid="runtests.class.path" />
+			<formatter type="plain" />
+			<test name="test.com.inovis.${customTest}">
+			</test>
+		</junit>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Run the Performance unit tests with JUnit  -->
+	<!-- ================================================================== -->
+	<target name="runperftests" depends="compiletests">
+		<junit fork="yes" printsummary="yes" haltonfailure="no">
+			<classpath refid="runtests.class.path" />
+			<formatter type="plain" />
+			<test name="test.com.inovis.PerformanceSuite">
+			</test>
+		</junit>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Run the Performance unit tests with JUnit -->
+	<!-- ================================================================== -->
+	<target name="runcactustests" depends="init">
+		<junit fork="yes" printsummary="yes" haltonfailure="no">
+			<classpath refid="runtests.class.path" />
+			<formatter type="plain" />
+			<test name="test.com.inovis.CactusTestSuite">
+			</test>
+		</junit>
+	</target>
+
+	<!-- ====================================================================== -->
+	<!-- Builds a war file with all the Cactus tests                            -->
+	<!-- To add another Cactus test, just add the class under the classes       -->
+	<!-- tag below.  You then need to add any EJB refs to the                   -->
+	<!-- web.xml/weblogic.xml files in test.com.inovis.b2b.testlib.cactus.config  -->
+	<!-- ====================================================================== -->
+	<target name="CactusTestsWar" description="Builds the WAR file which contains all Cactus tests">
+		<war warfile="${dist}/lib/CactusTests.war" manifest="${manifest}" webxml="${srctest}/${dir.cactus.config}/web.xml">
+			<webinf dir="${srctest}/${dir.cactus.config}">
+				<include name="weblogic.xml" />
+			</webinf>
+			<lib dir="${junit.lib}">
+				<include name="junit-4.4.jar" />
+				<include name="cactus-1.7.2.jar" />
+				<include name="aspectjrt-1.2.1.jar" />
+				<include name="commons-logging-1.0.4.jar" />
+			</lib>
+			<lib dir="lib">
+				<include name="w3cxpath.jar" />
+			</lib>
+			<classes dir="${buildtest}">
+				<include name="${dir.testlib}/*.class" />
+			</classes>
+  			<classes dir="${buildtest}">
+			  	<include name="${dir.test.inovis}/b2b/messagestore/facade/TestLocalMessageStoreFacade*.class" />
+  				<include name="${dir.test.inovis}/b2b/messagestore/TestMessageStoreFactory*.class" />
+  				<include name="${dir.test.inovis}/b2b/lib/service/TestLocalServiceLocator*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/lib/modules/TestOmniParser*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/lib/modules/TestOmniParserCallback*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/pipeline/testlib/PipelineTestHelper*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/pipeline/testlib/SetupPipelineTests*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/pipeline/modules/TestValidateTP*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/pipeline/modules/TestValidateDocument*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/pipeline/modules/TestValidateBroker*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/uccnet/SetupUCCnetTests*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/uccnet/TestUCCnetTransport*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/tandem/SetupTandemTests*.class" />
+  				<include name="${dir.test.inovis}/mss/gateways/tandem/TestTandemTransport*.class" />
+  				<include name="${dir.test.inovis}/mss/gateway/framework/TestGatewayAuditHelper*.class" />
+  				<include name="${dir.test.inovis}/mss/gateway/framework/TestGatewayDocument*.class" />
+  				<include name="${dir.test.inovis}/mss/gateway/framework/TestGatewayMessageDB*.class" />
+  				<include name="${dir.test.inovis}/b2b/audit/TestAuditor*.class" />
+  				<include name="${dir.test.inovis}/b2b/audit/TestAuditorDB*.class" />
+  				<include name="${dir.test.inovis}/b2b/bo/TestNonXmlBusinessObjectStore*.class" />
+  				<include name="${dir.test.inovis}/b2b/bo/SimpleBOInstanceHelper*.class" />
+  				<include name="${dir.test.inovis}/b2b/bo/TestBusinessObjectInstanceStore*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestDocumentSetup*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestDocumentDB*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestDocumentEdiDB*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestDocumentEventsDB*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestDocumentAuditHelper*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestLocalDocumentFacade*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/TestDocumentReports*.class" />
+  				<include name="${dir.test.inovis}/mss/doctrack/DocumentTestHelper*.class" />
+				<include name="${dir.test.inovis}/mss/eventframework/TestEventManager.class" />
+				<include name="${dir.test.inovis}/mss/eventframework/JUnitTestListener.class" />
+  				<include name="${dir.test.inovis}/mss/TestHelper*.class" />
+  				<include name="${dir.test.inovis}/mss/billing/audit/TestBillingAuditHelper*.class" />
+  				<include name="${dir.test.inovis}/mss/billing/customer/audit/TestCustomerAuditHelper*.class" />
+  				<include name="${dir.test.inovis}/b2b/rules/router/TestPhonoNet*.class" />
+  				<include name="${dir.test.inovis}/b2b/rules/router/TestModifyElement*.class" />
+  				<include name="${dir.test.inovis}/b2b/rules/audit/TestRuleInstanceAuditHelper*.class" />
+  				<include name="${dir.test.inovis}/b2b/rules/audit/TestRuleExecutionAuditHelper*.class" />
+  				<include name="${dir.test.inovis}/mss/service/crossreference/TestCrossReference*.class" />  				
+  				<include name="${dir.test.inovis}/mss/user/audit/TestUserAuditHelper*.class" />
+  			</classes>
+  			<classes dir="${buildmain}">
+			    <include name="${dir.audit}/store/**" />
+			    <include name="${dir.document}/store/**" />
+  			</classes>
+		</war>
+	</target>
+	
+</project>

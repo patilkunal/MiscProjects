@@ -1,0 +1,22 @@
+<project name="build-inovisworks-css" default="build" 
+	basedir="checkout/inovisworks/main/css/webclient">
+<taskdef name="stoptomcat" classname="org.apache.catalina.ant.StopTask"/>
+<taskdef name="starttomcat" classname="org.apache.catalina.ant.StartTask"/>
+<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask"/>
+<!--
+	<taskdef file="tomcattasks.properties" classpath="c:/tomcat/server/lib/catalina-ant.jar"/>	
+	<deploy url="${tom.url}" username="${tom.username}" password="${tom.password}" path="/${build.branch}" localWar="file://${LPS_HOME} "/>
+	<start url="${tom.url}" username="${tom.username}" password="${tom.password}" path="/${build.branch}"/>
+	<stop url="${tom.url}" username="${tom.username}" password="${tom.password}" path="/${build.branch}"/>
+// -->
+<property name="tom.url" value="http://localhost:8080/manager"/>
+<property name="tom.username" value="admin"/>
+<property name="tom.password" value="admin123"/>
+	<target name="build">
+
+		<ant antfile="buildLocal.xml" target="kdeploy"/>
+
+		<reload url="${tom.url}" username="${tom.username}" password="${tom.password}" path="/css"/>
+		<echo message="CSS app started ..."/>
+	</target>
+</project>

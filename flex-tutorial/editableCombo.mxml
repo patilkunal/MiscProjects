@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+        layout="vertical">
+
+    <mx:Form width="350">
+        <mx:FormItem label="User:">
+            <mx:ComboBox id="comboBox">
+                <mx:dataProvider>
+                    <mx:Array>
+                        <mx:String>Any</mx:String>
+                        <mx:String>Specific</mx:String>
+                    </mx:Array>
+                </mx:dataProvider>
+            </mx:ComboBox>
+            <mx:TextInput id="textInput"
+                    visible="{comboBox.selectedItem == 'Specific'}"
+                    includeInLayout="{textInput.visible}" />
+        </mx:FormItem>
+        <mx:FormItem label="Date range:" direction="horizontal">
+            <mx:DateField id="startDate" />
+            <mx:DateField id="endDate" />
+        </mx:FormItem>
+    </mx:Form>
+
+</mx:Application>

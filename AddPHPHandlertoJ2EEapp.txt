@@ -1,0 +1,29 @@
+WEB-INF/web.xml in your Application:
+-----------------
+<servlet>
+    <servlet-name>PHPCGIServlet</servlet-name>
+
+    <servlet-class>weblogic.servlet.CGIServlet</servlet-class>
+    <init-param>
+      <param-name>cgiDir</param-name>
+      <param-value>
+        C:\path\to\directory\with\php\scripts
+      </param-value>
+    </init-param>
+
+    <init-param>
+      <param-name>*.php</param-name>
+      <param-value>C:\path\to\php.exe</param-value>
+    </init-param>
+  </servlet></p>
+
+<servlet-mapping>
+    <servlet-name>PHPCGIServlet</servlet-name>
+
+    <url-pattern>/php/*</url-pattern>
+  </servlet-mapping>
+---------------------
+In your php.ini file, search for "cgi.force_redirect". You need to uncomment this line and set it to 0:
+
+cgi.force_redirect=0
+Once this is done, any .php files in the 'cgiDir' directory will be available at http://yourserver:port/php/  
